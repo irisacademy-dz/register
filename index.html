@@ -91,6 +91,11 @@
         .btn-secondary {
             @apply bg-green-700 text-white font-semibold py-3 px-7 rounded-full shadow-md transition duration-300 ease-in-out hover:bg-green-800 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-75;
         }
+        /* New red button style for placement test */
+        .btn-placement-test {
+            @apply bg-red-600 text-white font-bold py-4 px-8 rounded-full shadow-lg transition duration-300 ease-in-out hover:bg-red-700 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-red-300 focus:ring-opacity-75 animate-bounce-slow; /* Added bounce animation */
+        }
+
         .card {
             @apply bg-white p-6 rounded-lg shadow-sm border border-gray-100 transition duration-300 ease-in-out hover:shadow-md;
         }
@@ -99,6 +104,19 @@
             direction: rtl;
             text-align: right;
             font-family: 'Open Sans', sans-serif; /* Keep consistent font or specify an Arabic one if needed */
+        }
+
+        /* Keyframe for slow bounce animation */
+        @keyframes bounce-slow {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px); /* Smaller bounce for subtlety */
+            }
+        }
+        .animate-bounce-slow {
+            animation: bounce-slow 2s infinite ease-in-out;
         }
     </style>
 </head>
@@ -117,7 +135,8 @@
             </button>
         </div>
 
-        <header class="text-center mb-12 pt-8"> <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-4 leading-tight">
+        <header class="text-center mb-12 pt-8">
+            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-4 leading-tight">
                 IRIS Language Academy
             </h1>
             <p class="text-xl sm:text-2xl text-blue-800 font-normal tracking-wide max-w-2xl mx-auto">
@@ -159,6 +178,46 @@
             </div>
         </section>
 
+        <section class="mb-16 bg-red-50 p-8 rounded-xl border border-red-200 shadow-lg text-center">
+            <h3 class="text-3xl sm:text-4xl font-bold text-red-800 mb-6">
+                Why Take Our Digital Placement Test?
+            </h3>
+            <p class="text-lg sm:text-xl text-red-700 leading-relaxed max-w-4xl mx-auto mb-8">
+                Not sure where to begin your English learning journey? Our comprehensive digital placement test is designed to accurately assess your current English proficiency in all key skills:
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow-md border border-red-100">
+                    <i class="fas fa-book-reader text-red-600 text-4xl mb-3"></i>
+                    <p class="font-semibold text-gray-800">Reading Comprehension</p>
+                </div>
+                <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow-md border border-red-100">
+                    <i class="fas fa-pencil-alt text-red-600 text-4xl mb-3"></i>
+                    <p class="font-semibold text-gray-800">Writing Skills</p>
+                </div>
+                <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow-md border border-red-100">
+                    <i class="fas fa-microphone-alt text-red-600 text-4xl mb-3"></i>
+                    <p class="font-semibold text-gray-800">Speaking Fluency</p>
+                </div>
+                <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow-md border border-red-100">
+                    <i class="fas fa-headphones-alt text-red-600 text-4xl mb-3"></i>
+                    <p class="font-semibold text-gray-800">Listening Skills</p>
+                </div>
+            </div>
+            <p class="text-lg sm:text-xl text-red-700 leading-relaxed max-w-4xl mx-auto">
+                Upon completion, you'll receive a detailed report and a personalized recommendation for the perfect course level (A1, A2, B1, B2, or C1), ensuring you start at the right place for maximum progress.
+            </p>
+            <p class="arabic-text text-red-600 text-lg mt-4">
+                هل أنت غير متأكد من أين تبدأ رحلتك لتعلم اللغة الإنجليزية؟ تم تصميم اختبار تحديد المستوى الرقمي الشامل لدينا لتقييم كفاءتك الحالية في اللغة الإنجليزية بدقة في جميع المهارات الأساسية: القراءة، الكتابة، التحدث، والاستماع.
+                عند الانتهاء، ستتلقى تقريرًا مفصلاً وتوصية مخصصة لمستوى الدورة المثالي (A1، A2، B1، B2، أو C1)، مما يضمن أن تبدأ في المكان الصحيح لتحقيق أقصى تقدم.
+            </p>
+            <div class="mt-10">
+                <button onclick="scrollToForm()" class="btn-placement-test inline-flex items-center">
+                    <i class="fas fa-edit mr-3 text-2xl"></i> REGISTER FOR OUR PLACEMENT TEST NOW!
+                </button>
+            </div>
+        </section>
+
+
         <section class="mb-16">
             <h3 class="text-center text-3xl sm:text-4xl font-bold text-gray-800 mb-10">
                 Our General English Course Structure
@@ -197,8 +256,8 @@
                         <p class="mb-1"><i class="fas fa-money-bill-alt mr-2 text-blue-600"></i> 6,000 DZD/sublevel</p>
                         <p><i class="fas fa-chalkboard-teacher mr-2 text-blue-600"></i> 20h live + 20h platform</p>
                     </div>
-                    <button onclick="scrollToForm()" class="btn-primary w-full flex items-center justify-center text-center">
-                        <i class="fas fa-file-alt mr-2"></i> <span class="text-left">Register Interest for our Digital Placement Test</span>
+                    <button onclick="scrollToForm()" class="btn-placement-test w-full flex items-center justify-center text-center">
+                        <i class="fas fa-file-alt mr-2"></i> <span class="text-left">Register for Digital Placement Test</span>
                     </button>
                 </div>
 
@@ -214,8 +273,8 @@
                         <p class="mb-1"><i class="fas fa-money-bill-alt mr-2 text-blue-600"></i> 6,000 DZD/sublevel</p>
                         <p><i class="fas fa-chalkboard-teacher mr-2 text-blue-600"></i> 20h live + 20h platform</p>
                     </div>
-                    <button onclick="scrollToForm()" class="btn-primary w-full flex items-center justify-center text-center">
-                        <i class="fas fa-file-alt mr-2"></i> <span class="text-left">Register Interest for our Digital Placement Test</span>
+                    <button onclick="scrollToForm()" class="btn-placement-test w-full flex items-center justify-center text-center">
+                        <i class="fas fa-file-alt mr-2"></i> <span class="text-left">Register for Digital Placement Test</span>
                     </button>
                 </div>
 
@@ -231,8 +290,8 @@
                         <p class="mb-1"><i class="fas fa-money-bill-alt mr-2 text-blue-600"></i> 6,000 DZD/sublevel</p>
                         <p><i class="fas fa-chalkboard-teacher mr-2 text-blue-600"></i> 20h live + 20h platform</p>
                     </div>
-                    <button onclick="scrollToForm()" class="btn-primary w-full flex items-center justify-center text-center">
-                        <i class="fas fa-file-alt mr-2"></i> <span class="text-left">Register Interest for our Digital Placement Test</span>
+                    <button onclick="scrollToForm()" class="btn-placement-test w-full flex items-center justify-center text-center">
+                        <i class="fas fa-file-alt mr-2"></i> <span class="text-left">Register for Digital Placement Test</span>
                     </button>
                 </div>
 
@@ -248,8 +307,8 @@
                         <p class="mb-1"><i class="fas fa-money-bill-alt mr-2 text-blue-600"></i> 6,000 DZD/sublevel</p>
                         <p><i class="fas fa-chalkboard-teacher mr-2 text-blue-600"></i> 20h live + 20h platform</p>
                     </div>
-                    <button onclick="scrollToForm()" class="btn-primary w-full flex items-center justify-center text-center">
-                        <i class="fas fa-file-alt mr-2"></i> <span class="text-left">Register Interest for our Digital Placement Test</span>
+                    <button onclick="scrollToForm()" class="btn-placement-test w-full flex items-center justify-center text-center">
+                        <i class="fas fa-file-alt mr-2"></i> <span class="text-left">Register for Digital Placement Test</span>
                     </button>
                 </div>
 
@@ -265,8 +324,8 @@
                         <p class="mb-1"><i class="fas fa-money-bill-alt mr-2 text-blue-600"></i> 6,000 DZD/sublevel</p>
                         <p><i class="fas fa-chalkboard-teacher mr-2 text-blue-600"></i> 20h live + 20h platform</p>
                     </div>
-                    <button onclick="scrollToForm()" class="btn-primary w-full flex items-center justify-center text-center">
-                        <i class="fas fa-file-alt mr-2"></i> <span class="text-left">Register Interest for our Digital Placement Test</span>
+                    <button onclick="scrollToForm()" class="btn-placement-test w-full flex items-center justify-center text-center">
+                        <i class="fas fa-file-alt mr-2"></i> <span class="text-left">Register for Digital Placement Test</span>
                     </button>
                 </div>
 
@@ -328,7 +387,24 @@
             </div>
         </section>
 
-        <section id="registration-form-section" class="w-full pt-12">
+        <section class="w-full pt-12 pb-8 bg-purple-50 rounded-xl border border-purple-200 shadow-lg text-center mb-10">
+            <h3 class="text-3xl sm:text-4xl font-bold text-purple-800 mb-6">
+                Ready to Start Your English Journey?
+            </h3>
+            <p class="text-xl text-purple-700 max-w-3xl mx-auto mb-8">
+                Take the first step towards fluency today! Register your interest for our FREE digital placement test to discover your perfect starting point and unlock your potential.
+            </p>
+            <p class="arabic-text text-purple-600 text-lg mb-8">
+                هل أنت مستعد لبدء رحلتك في تعلم اللغة الإنجليزية؟
+                اتخذ الخطوة الأولى نحو الطلاقة اليوم! سجل اهتمامك لاختبار تحديد المستوى الرقمي المجاني لدينا لاكتشاف نقطة البداية المثالية لك واطلاق العنان لإمكانياتك.
+            </p>
+            <button onclick="scrollToForm()" class="btn-placement-test inline-flex items-center text-xl">
+                <i class="fas fa-arrow-alt-circle-down mr-3 text-2xl"></i> REGISTER FOR PLACEMENT TEST!
+            </button>
+        </section>
+
+
+        <section id="registration-form-section" class="w-full pt-4">
             <h3 class="text-center text-3xl sm:text-4xl font-bold text-gray-800 mb-8">
                 Complete Your Registration
             </h3>
