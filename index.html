@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IRIS Language Academy - English Courses for Algerian Learners</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f8faff; /* Lighter, subtle background */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column; /* Allow content to flow naturally */
+            align-items: center;
+            justify-content: flex-start; /* Align content to top */
+            padding: 1rem;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Merriweather', serif; /* Serif font for headings */
+        }
+        .container-wrapper {
+            background-color: #ffffff;
+            border-radius: 1.5rem; /* More subtle rounding */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Softer shadow */
+            width: 100%;
+            max-width: 72rem; /* Increased max-width for wider layout on large screens */
+            transition: all 0.3s ease-in-out;
+            padding: 2.5rem; /* Increased padding */
+        }
+        @media (min-width: 640px) { /* sm breakpoint */
+            .container-wrapper {
+                padding: 3rem;
+            }
+        }
+        @media (min-width: 1024px) { /* lg breakpoint */
+            .container-wrapper {
+                padding: 4rem;
+            }
+        }
+        .form-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 150%; /* Default for mobile/portrait aspect */
+            height: 0;
+            overflow: hidden;
+            border-radius: 0.75rem; /* Rounded corners for iframe container */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Subtle shadow for form */
+        }
+        .form-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        @media (min-width: 768px) {
+            .form-container {
+                padding-bottom: 90%; /* Adjust for tablets */
+            }
+        }
+        @media (min-width: 1024px) {
+            .form-container {
+                padding-bottom: 60%; /* Adjust for laptops, closer to 16:9 */
+            }
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        .language-switcher {
+            position: absolute;
+            top: 1rem; /* Adjust position */
+            right: 1rem; /* Adjust position */
+            z-index: 10; /* Ensure it's above other content */
+        }
+        .flag-icon {
+            width: 20px; /* Slightly smaller flags */
+            height: 20px;
+            margin-right: 6px; /* Reduced margin */
+            vertical-align: middle;
+            border-radius: 3px; /* Slightly rounded flag corners */
+            box-shadow: 0 0 3px rgba(0, 0, 0, 0.1); /* Subtle shadow for flags */
+        }
+        /* Custom Button Style */
+        .btn-primary {
+            @apply bg-blue-700 text-white font-semibold py-3 px-7 rounded-full shadow-md transition duration-300 ease-in-out hover:bg-blue-800 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75;
+        }
+        .btn-secondary {
+            @apply bg-green-700 text-white font-semibold py-3 px-7 rounded-full shadow-md transition duration-300 ease-in-out hover:bg-green-800 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-75;
+        }
+        .card {
+            @apply bg-white p-6 rounded-lg shadow-sm border border-gray-100 transition duration-300 ease-in-out hover:shadow-md;
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-center">
+
+    <div class="container-wrapper relative">
+        <div class="language-switcher flex space-x-2">
+            <button onclick="toggleLanguage('en')" class="bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-1.5 px-3 rounded-full text-sm flex items-center">
+                <img src="https://flagcdn.com/w20/gb.png" class="flag-icon" alt="English"> EN
+            </button>
+            <button onclick="toggleLanguage('fr')" class="bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-1.5 px-3 rounded-full text-sm flex items-center">
+                <img src="https://flagcdn.com/w20/fr.png" class="flag-icon" alt="French"> FR
+            </button>
+            <button onclick="toggleLanguage('ar')" class="bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-1.5 px-3 rounded-full text-sm flex items-center">
+                <img src="https://flagcdn.com/w20/dz.png" class="flag-icon" alt="Arabic"> AR
+            </button>
+        </div>
+
+        <header class="text-center mb-12 pt-8"> <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-4 leading-tight">
+                IRIS Language Academy
+            </h1>
+            <p class="text-xl sm:text-2xl text-blue-800 font-normal tracking-wide max-w-2xl mx-auto">
+                Your Trusted Path to English Fluency in Algeria
+            </p>
+            <div class="mt-6 flex flex-col sm:flex-row justify-center items-center space-y-2 sm:space-y-0 sm:space-x-6 text-gray-600 text-lg">
+                <div class="flex items-center">
+                    <i class="fas fa-check-circle text-green-600 mr-2"></i>
+                    <span>Algerian-certified instructors</span>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-check-circle text-green-600 mr-2"></i>
+                    <span>Convenient local payment methods</span>
+                </div>
+            </div>
+        </header>
+
+        <section class="text-center mb-16">
+            <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-6">
+                Elevate Your English Skills Online
+            </h2>
+            <p class="text-lg sm:text-xl text-gray-700 leading-relaxed max-w-4xl mx-auto mb-8">
+                Welcome to Algeria's premier English learning platform. At IRIS Language Academy, we recognize the distinct learning context for Algerian students and have meticulously crafted courses to meet your specific needs.
+            </p>
+            <div class="bg-yellow-50 border-l-4 border-yellow-400 p-5 text-left max-w-3xl mx-auto rounded-md shadow-sm">
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 mt-1">
+                        <i class="fas fa-info-circle text-yellow-600 text-2xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-base text-yellow-800 font-semibold">
+                            Special Enrollment Offer:
+                        </p>
+                        <p class="text-sm text-yellow-700 mt-1">
+                            Receive a <strong class="text-yellow-900">10% discount</strong> when enrolling and paying for 3 sublevels upfront using local Algerian payment methods (CCP, CIB, etc.).
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <h3 class="text-center text-3xl sm:text-4xl font-bold text-gray-800 mb-10">
+                Our General English Course Structure
+            </h3>
+            
+            <div class="bg-blue-50 p-7 rounded-xl mb-10 border border-blue-100 shadow-md">
+                <h4 class="font-bold text-2xl mb-4 text-blue-800 flex items-center"><i class="fas fa-clipboard-list text-blue-600 mr-3"></i> Core Course Information</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-700">
+                    <div class="flex items-start">
+                        <i class="fas fa-money-bill-wave text-blue-600 mt-1 mr-3 text-lg"></i>
+                        <div>
+                            <p class="font-semibold text-lg">Consistent Pricing Across All Levels</p>
+                            <p class="text-base">Each sublevel (A1 to C1) is priced at <strong class="text-blue-800">6,000 DZD</strong>.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="fas fa-clock text-blue-600 mt-1 mr-3 text-lg"></i>
+                        <div>
+                            <p class="font-semibold text-lg">Comprehensive Learning Experience</p>
+                            <p class="text-base">Includes 10 live interactive sessions (2 hours each) plus 20 hours of engaging self-paced platform activities per sublevel.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card flex flex-col items-center text-center">
+                    <h4 class="text-2xl font-bold text-blue-800 mb-3">Beginner (A1)</h4>
+                    <p class="text-gray-700 mb-5 flex-grow">
+                        Ideal for those new to English. Master fundamental vocabulary, sentence construction, and daily greetings, contextualized for Algerian learners.
+                    </p>
+                    <div class="w-full text-left text-sm text-gray-600 mb-4">
+                        <p class="mb-1"><i class="fas fa-money-bill-alt mr-2 text-blue-600"></i> 6,000 DZD/sublevel</p>
+                        <p><i class="fas fa-chalkboard-teacher mr-2 text-blue-600"></i> 20h live + 20h platform</p>
+                    </div>
+                    <button onclick="scrollToForm()" class="btn-primary w-full">
+                        <i class="fas fa-edit mr-2"></i> Take Placement Test
+                    </button>
+                </div>
+
+                <div class="card flex flex-col items-center text-center">
+                    <h4 class="text-2xl font-bold text-blue-800 mb-3">Elementary (A2)</h4>
+                    <p class="text-gray-700 mb-5 flex-grow">
+                        Develop essential conversational abilities with topics directly relevant to Algerian daily life, such as local markets, transportation, and social interactions.
+                    </p>
+                    <div class="w-full text-left text-sm text-gray-600 mb-4">
+                        <p class="mb-1"><i class="fas fa-money-bill-alt mr-2 text-blue-600"></i> 6,000 DZD/sublevel</p>
+                        <p><i class="fas fa-chalkboard-teacher mr-2 text-blue-600"></i> 20h live + 20h platform</p>
+                    </div>
+                    <button onclick="scrollToForm()" class="btn-primary w-full">
+                        <i class="fas fa-edit mr-2"></i> Take Placement Test
+                    </button>
+                </div>
+
+                <div class="card flex flex-col items-center text-center">
+                    <h4 class="text-2xl font-bold text-blue-800 mb-3">Pre-Intermediate (B1)</h4>
+                    <p class="text-gray-700 mb-5 flex-grow">
+                        Crucial for BAC students and aspiring professionals. This level focuses on academic and workplace English competencies specific to the Algerian context.
+                    </p>
+                    <div class="w-full text-left text-sm text-gray-600 mb-4">
+                        <p class="mb-1"><i class="fas fa-money-bill-alt mr-2 text-blue-600"></i> 6,000 DZD/sublevel</p>
+                        <p><i class="fas fa-chalkboard-teacher mr-2 text-blue-600"></i> 20h live + 20h platform</p>
+                    </div>
+                    <button onclick="scrollToForm()" class="btn-primary w-full">
+                        <i class="fas fa-edit mr-2"></i> Take Placement Test
+                    </button>
+                </div>
+
+                <div class="card flex flex-col items-center text-center">
+                    <h4 class="text-2xl font-bold text-blue-800 mb-3">Intermediate (B2)</h4>
+                    <p class="text-gray-700 mb-5 flex-grow">
+                        Refine your English for Algerian university studies or professional settings, incorporating specialized vocabulary and communication strategies.
+                    </p>
+                    <div class="w-full text-left text-sm text-gray-600 mb-4">
+                        <p class="mb-1"><i class="fas fa-money-bill-alt mr-2 text-blue-600"></i> 6,000 DZD/sublevel</p>
+                        <p><i class="fas fa-chalkboard-teacher mr-2 text-blue-600"></i> 20h live + 20h platform</p>
+                    </div>
+                    <button onclick="scrollToForm()" class="btn-primary w-full">
+                        <i class="fas fa-edit mr-2"></i> Take Placement Test
+                    </button>
+                </div>
+
+                <div class="card flex flex-col items-center text-center">
+                    <h4 class="text-2xl font-bold text-blue-800 mb-3">Upper-Intermediate (C1)</h4>
+                    <p class="text-gray-700 mb-5 flex-grow">
+                        Designed for professionals targeting international career opportunities. Includes insights into Algerian business culture and advanced negotiation techniques.
+                    </p>
+                    <div class="w-full text-left text-sm text-gray-600 mb-4">
+                        <p class="mb-1"><i class="fas fa-money-bill-alt mr-2 text-blue-600"></i> 6,000 DZD/sublevel</p>
+                        <p><i class="fas fa-chalkboard-teacher mr-2 text-blue-600"></i> 20h live + 20h platform</p>
+                    </div>
+                    <button onclick="scrollToForm()" class="btn-primary w-full">
+                        <i class="fas fa-edit mr-2"></i> Take Placement Test
+                    </button>
+                </div>
+
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm border border-gray-200 flex flex-col items-center text-center">
+                    <h4 class="text-2xl font-bold text-gray-700 mb-3">Specialized Programs</h4>
+                    <p class="text-gray-600 mb-5 flex-grow">
+                        We are continuously developing new specialized courses based on demand. Reach out to us to inquire about our upcoming programs.
+                    </p>
+                    <button onclick="scrollToForm()" class="btn-secondary w-full bg-gray-500 hover:bg-gray-600">
+                        <i class="fas fa-envelope mr-2"></i> Inquire Here
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16 bg-blue-50 p-7 rounded-xl border border-blue-100 shadow-md">
+            <h3 class="text-center text-3xl sm:text-4xl font-bold text-gray-800 mb-8">
+                Specialized Courses for Algerian Professionals
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="card">
+                    <h4 class="font-bold text-lg mb-3 text-blue-700 flex items-center"><i class="fas fa-graduation-cap mr-2 text-blue-600"></i> Academic English</h4>
+                    <p class="text-gray-700 text-base">For university academics and researchers focused on publishing papers or presenting at international conferences. Covers academic writing, presentations, and field-specific terminology.</p>
+                </div>
+                <div class="card">
+                    <h4 class="font-bold text-lg mb-3 text-blue-700 flex items-center"><i class="fas fa-comments mr-2 text-blue-600"></i> Conversational English</h4>
+                    <p class="text-gray-700 text-base">Emphasizes spoken fluency and understanding, including comparative analysis with Algerian dialects. Ideal for professionals seeking confident daily communication.</p>
+                </div>
+                <div class="card">
+                    <h4 class="font-bold text-lg mb-3 text-blue-700 flex items-center"><i class="fas fa-user-tie mr-2 text-blue-600"></i> One-on-One Coaching</h4>
+                    <p class="text-gray-700 text-base">Customized sessions designed to meet your individual learning objectives, preferred schedule, and pace, delivered by our highly experienced instructors.</p>
+                </div>
+                <div class="card">
+                    <h4 class="font-bold text-lg mb-3 text-blue-700 flex items-center"><i class="fas fa-briefcase mr-2 text-blue-600"></i> Business English</h4>
+                    <p class="text-gray-700 text-base">Crucial for professionals in Algerian companies engaging with international partners. Topics include effective meeting participation, negotiation strategies, and formal corporate communication.</p>
+                </div>
+                <div class="card">
+                    <h4 class="font-bold text-lg mb-3 text-blue-700 flex items-center"><i class="fas fa-flask mr-2 text-blue-600"></i> ESP (Medical/Technical)</h4>
+                    <p class="text-gray-700 text-base">English for Specific Purposes, tailored for healthcare professionals, engineers, and IT specialists, focusing on industry-specific vocabulary and realistic scenarios.</p>
+                </div>
+                <div class="card">
+                    <h4 class="font-bold text-lg mb-3 text-blue-700 flex items-center"><i class="fas fa-university mr-2 text-blue-600"></i> University Custom Programs</h4>
+                    <p class="text-gray-700 text-base">Bespoke courses developed for Algerian university departments requiring specialized English training for their academic staff and student body.</p>
+                </div>
+            </div>
+            <div class="mt-10 text-center">
+                <button onclick="scrollToForm()" class="btn-secondary inline-flex items-center">
+                    <i class="fas fa-info-circle mr-2"></i> Request Info on Specialized Courses
+                </button>
+            </div>
+        </section>
+
+        <section id="registration-form-section" class="w-full pt-12">
+            <h3 class="text-center text-3xl sm:text-4xl font-bold text-gray-800 mb-8">
+                Complete Your Registration
+            </h3>
+            <div class="bg-blue-50 p-6 rounded-xl mb-6 border border-blue-100 shadow-sm">
+                <h4 class="font-bold text-xl mb-3 text-blue-800 flex items-center"><i class="fas fa-id-card-alt mr-2 text-blue-600"></i> Algerian Student Information</h4>
+                <p class="text-gray-700 text-base">For your convenience, our registration form is available in English, French, and Arabic. Please select your preferred language using the buttons at the top of the page before proceeding.</p>
+            </div>
+            <div class="form-container rounded-lg overflow-hidden">
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfNrs2BgQZPZ3JZuzFPqDr_byJo3lXaxK1v9Zjb9Jl2O-5jQw/viewform?embedded=true"
+                        width="640"
+                        height="959"
+                        frameborder="0"
+                        marginheight="0"
+                        marginwidth="0">
+                    Loading...
+                </iframe>
+            </div>
+        </section>
+
+        <footer class="text-center mt-16 text-gray-600 text-base">
+            <div class="mb-6 flex justify-center space-x-5 text-2xl">
+                <a href="#" class="text-gray-500 hover:text-blue-700 transition duration-200"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-gray-500 hover:text-blue-500 transition duration-200"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-gray-500 hover:text-red-600 transition duration-200"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="text-gray-500 hover:text-purple-700 transition duration-200"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p class="text-sm sm:text-base">&copy; 2025 IRIS Language Academy. All rights reserved.</p>
+            <p class="mt-2 text-sm sm:text-base">Algiers, Algeria | Phone: <a href="tel:+213795369006" class="text-blue-700 hover:underline">+213 795 36 90 06</a></p>
+            <p class="mt-2 text-sm sm:text-base font-medium">Dedicated to English learners in Algeria.</p>
+        </footer>
+    </div>
+
+    <script>
+        function scrollToForm() {
+            const formSection = document.getElementById('registration-form-section');
+            if (formSection) {
+                formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+        
+        function toggleLanguage(lang) {
+            // In a real implementation, this would load translated content
+            alert(`Language switched to ${lang}. In a full implementation, this would translate the page content.`);
+            // You would typically have JSON files with translations and update the DOM here
+        }
+    </script>
+
+</body>
+</html>
