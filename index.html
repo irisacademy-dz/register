@@ -94,6 +94,12 @@
         .card {
             @apply bg-white p-6 rounded-lg shadow-sm border border-gray-100 transition duration-300 ease-in-out hover:shadow-md;
         }
+        /* Arabic text specific styling */
+        .arabic-text {
+            direction: rtl;
+            text-align: right;
+            font-family: 'Open Sans', sans-serif; /* Keep consistent font or specify an Arabic one if needed */
+        }
     </style>
 </head>
 <body class="flex flex-col items-center justify-center">
@@ -181,71 +187,86 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="card flex flex-col items-center text-center">
                     <h4 class="text-2xl font-bold text-blue-800 mb-3">Beginner (A1)</h4>
-                    <p class="text-gray-700 mb-5 flex-grow">
-                        Ideal for those new to English. Master fundamental vocabulary, sentence construction, and daily greetings, contextualized for Algerian learners.
+                    <p class="text-gray-700 mb-2 flex-grow">
+                        Can understand and use familiar everyday expressions and very basic phrases aimed at the satisfaction of needs of a concrete type. Can introduce him/herself and others and can ask and answer questions about personal details.
+                    </p>
+                    <p class="arabic-text text-gray-600 text-sm mb-4">
+                        يمكنه فهم واستخدام التعبيرات اليومية المألوفة والعبارات الأساسية جدًا التي تهدف إلى تلبية احتياجات من نوع ملموس. يمكنه تقديم نفسه والآخرين، ويمكنه طرح أسئلة والإجابة عليها حول التفاصيل الشخصية.
                     </p>
                     <div class="w-full text-left text-sm text-gray-600 mb-4">
                         <p class="mb-1"><i class="fas fa-money-bill-alt mr-2 text-blue-600"></i> 6,000 DZD/sublevel</p>
                         <p><i class="fas fa-chalkboard-teacher mr-2 text-blue-600"></i> 20h live + 20h platform</p>
                     </div>
-                    <button onclick="scrollToForm()" class="btn-primary w-full">
-                        <i class="fas fa-edit mr-2"></i> Take Placement Test
+                    <button onclick="scrollToForm()" class="btn-primary w-full flex items-center justify-center text-center">
+                        <i class="fas fa-file-alt mr-2"></i> <span class="text-left">Register Interest for our Digital Placement Test</span>
                     </button>
                 </div>
 
                 <div class="card flex flex-col items-center text-center">
                     <h4 class="text-2xl font-bold text-blue-800 mb-3">Elementary (A2)</h4>
-                    <p class="text-gray-700 mb-5 flex-grow">
-                        Develop essential conversational abilities with topics directly relevant to Algerian daily life, such as local markets, transportation, and social interactions.
+                    <p class="text-gray-700 mb-2 flex-grow">
+                        Can understand sentences and frequently used expressions related to areas of most immediate relevance (e.g. basic personal and family information, shopping, local geography, employment). Can communicate in simple and routine tasks.
+                    </p>
+                    <p class="arabic-text text-gray-600 text-sm mb-4">
+                        يمكنه فهم الجمل والتعبيرات الشائعة الاستخدام المتعلقة بالمجالات ذات الصلة المباشرة (مثل المعلومات الشخصية والعائلية الأساسية، التسوق، الجغرافيا المحلية، العمل). يمكنه التواصل في مهام بسيطة وروتينية.
                     </p>
                     <div class="w-full text-left text-sm text-gray-600 mb-4">
                         <p class="mb-1"><i class="fas fa-money-bill-alt mr-2 text-blue-600"></i> 6,000 DZD/sublevel</p>
                         <p><i class="fas fa-chalkboard-teacher mr-2 text-blue-600"></i> 20h live + 20h platform</p>
                     </div>
-                    <button onclick="scrollToForm()" class="btn-primary w-full">
-                        <i class="fas fa-edit mr-2"></i> Take Placement Test
+                    <button onclick="scrollToForm()" class="btn-primary w-full flex items-center justify-center text-center">
+                        <i class="fas fa-file-alt mr-2"></i> <span class="text-left">Register Interest for our Digital Placement Test</span>
                     </button>
                 </div>
 
                 <div class="card flex flex-col items-center text-center">
                     <h4 class="text-2xl font-bold text-blue-800 mb-3">Pre-Intermediate (B1)</h4>
-                    <p class="text-gray-700 mb-5 flex-grow">
-                        Crucial for BAC students and aspiring professionals. This level focuses on academic and workplace English competencies specific to the Algerian context.
+                    <p class="text-gray-700 mb-2 flex-grow">
+                        Can understand the main points of clear standard input on familiar matters regularly encountered in work, school, leisure, etc. Can deal with most situations likely to arise whilst travelling in an area where the language is spoken.
+                    </p>
+                    <p class="arabic-text text-gray-600 text-sm mb-4">
+                        يمكنه فهم النقاط الرئيسية للمدخلات القياسية الواضحة حول الأمور المألوفة التي تواجه بانتظام في العمل، المدرسة، الترفيه، وما إلى ذلك. يمكنه التعامل مع معظم المواقف التي قد تنشأ أثناء السفر في منطقة يتحدث فيها اللغة.
                     </p>
                     <div class="w-full text-left text-sm text-gray-600 mb-4">
                         <p class="mb-1"><i class="fas fa-money-bill-alt mr-2 text-blue-600"></i> 6,000 DZD/sublevel</p>
                         <p><i class="fas fa-chalkboard-teacher mr-2 text-blue-600"></i> 20h live + 20h platform</p>
                     </div>
-                    <button onclick="scrollToForm()" class="btn-primary w-full">
-                        <i class="fas fa-edit mr-2"></i> Take Placement Test
+                    <button onclick="scrollToForm()" class="btn-primary w-full flex items-center justify-center text-center">
+                        <i class="fas fa-file-alt mr-2"></i> <span class="text-left">Register Interest for our Digital Placement Test</span>
                     </button>
                 </div>
 
                 <div class="card flex flex-col items-center text-center">
                     <h4 class="text-2xl font-bold text-blue-800 mb-3">Intermediate (B2)</h4>
-                    <p class="text-gray-700 mb-5 flex-grow">
-                        Refine your English for Algerian university studies or professional settings, incorporating specialized vocabulary and communication strategies.
+                    <p class="text-gray-700 mb-2 flex-grow">
+                        Can understand the main ideas of complex text on both concrete and abstract topics, including technical discussions in his/her field of specialization. Can interact with a degree of fluency and spontaneity.
+                    </p>
+                    <p class="arabic-text text-gray-600 text-sm mb-4">
+                        يمكنه فهم الأفكار الرئيسية للنصوص المعقدة حول المواضيع الملموسة والمجردة، بما في ذلك المناقشات التقنية في مجال تخصصه. يمكنه التفاعل بدرجة من الطلاقة والعفوية.
                     </p>
                     <div class="w-full text-left text-sm text-gray-600 mb-4">
                         <p class="mb-1"><i class="fas fa-money-bill-alt mr-2 text-blue-600"></i> 6,000 DZD/sublevel</p>
                         <p><i class="fas fa-chalkboard-teacher mr-2 text-blue-600"></i> 20h live + 20h platform</p>
                     </div>
-                    <button onclick="scrollToForm()" class="btn-primary w-full">
-                        <i class="fas fa-edit mr-2"></i> Take Placement Test
+                    <button onclick="scrollToForm()" class="btn-primary w-full flex items-center justify-center text-center">
+                        <i class="fas fa-file-alt mr-2"></i> <span class="text-left">Register Interest for our Digital Placement Test</span>
                     </button>
                 </div>
 
                 <div class="card flex flex-col items-center text-center">
                     <h4 class="text-2xl font-bold text-blue-800 mb-3">Upper-Intermediate (C1)</h4>
-                    <p class="text-gray-700 mb-5 flex-grow">
-                        Designed for professionals targeting international career opportunities. Includes insights into Algerian business culture and advanced negotiation techniques.
+                    <p class="text-gray-700 mb-2 flex-grow">
+                        Can understand a wide range of demanding, longer texts, and recognize implicit meaning. Can express him/herself fluently and spontaneously without much obvious searching for expressions.
+                    </p>
+                    <p class="arabic-text text-gray-600 text-sm mb-4">
+                        يمكنه فهم مجموعة واسعة من النصوص الطويلة والمتطلبة، والتعرف على المعنى الضمني. يمكنه التعبير عن نفسه بطلاقة وعفوية دون عناء كبير في البحث عن التعبيرات.
                     </p>
                     <div class="w-full text-left text-sm text-gray-600 mb-4">
                         <p class="mb-1"><i class="fas fa-money-bill-alt mr-2 text-blue-600"></i> 6,000 DZD/sublevel</p>
                         <p><i class="fas fa-chalkboard-teacher mr-2 text-blue-600"></i> 20h live + 20h platform</p>
                     </div>
-                    <button onclick="scrollToForm()" class="btn-primary w-full">
-                        <i class="fas fa-edit mr-2"></i> Take Placement Test
+                    <button onclick="scrollToForm()" class="btn-primary w-full flex items-center justify-center text-center">
+                        <i class="fas fa-file-alt mr-2"></i> <span class="text-left">Register Interest for our Digital Placement Test</span>
                     </button>
                 </div>
 
@@ -253,6 +274,9 @@
                     <h4 class="text-2xl font-bold text-gray-700 mb-3">Specialized Programs</h4>
                     <p class="text-gray-600 mb-5 flex-grow">
                         We are continuously developing new specialized courses based on demand. Reach out to us to inquire about our upcoming programs.
+                    </p>
+                    <p class="arabic-text text-gray-600 text-sm mb-4">
+                        نحن نعمل باستمرار على تطوير دورات متخصصة جديدة بناءً على الطلب. تواصلوا معنا للاستفسار عن برامجنا القادمة.
                     </p>
                     <button onclick="scrollToForm()" class="btn-secondary w-full bg-gray-500 hover:bg-gray-600">
                         <i class="fas fa-envelope mr-2"></i> Inquire Here
@@ -268,27 +292,33 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div class="card">
                     <h4 class="font-bold text-lg mb-3 text-blue-700 flex items-center"><i class="fas fa-graduation-cap mr-2 text-blue-600"></i> Academic English</h4>
-                    <p class="text-gray-700 text-base">For university academics and researchers focused on publishing papers or presenting at international conferences. Covers academic writing, presentations, and field-specific terminology.</p>
+                    <p class="text-gray-700 text-base mb-2">For university academics and researchers focused on publishing papers or presenting at international conferences. Covers academic writing, presentations, and field-specific terminology.</p>
+                    <p class="arabic-text text-gray-600 text-sm">للأكاديميين والباحثين الجامعيين الذين يركزون على نشر الأوراق البحثية أو تقديم العروض التقديمية في المؤتمرات الدولية. تغطي الكتابة الأكاديمية، العروض التقديمية، والمصطلحات الخاصة بالمجال.</p>
                 </div>
                 <div class="card">
                     <h4 class="font-bold text-lg mb-3 text-blue-700 flex items-center"><i class="fas fa-comments mr-2 text-blue-600"></i> Conversational English</h4>
-                    <p class="text-gray-700 text-base">Emphasizes spoken fluency and understanding, including comparative analysis with Algerian dialects. Ideal for professionals seeking confident daily communication.</p>
+                    <p class="text-gray-700 text-base mb-2">Emphasizes spoken fluency and understanding, including comparative analysis with Algerian dialects. Ideal for professionals seeking confident daily communication.</p>
+                    <p class="arabic-text text-gray-600 text-sm">تركز على الطلاقة والفهم الشفهي، بما في ذلك التحليل المقارن مع اللهجات الجزائرية. مثالية للمهنيين الذين يبحثون عن تواصل يومي واثق.</p>
                 </div>
                 <div class="card">
                     <h4 class="font-bold text-lg mb-3 text-blue-700 flex items-center"><i class="fas fa-user-tie mr-2 text-blue-600"></i> One-on-One Coaching</h4>
-                    <p class="text-gray-700 text-base">Customized sessions designed to meet your individual learning objectives, preferred schedule, and pace, delivered by our highly experienced instructors.</p>
+                    <p class="text-gray-700 text-base mb-2">Customized sessions designed to meet your individual learning objectives, preferred schedule, and pace, delivered by our highly experienced instructors.</p>
+                    <p class="arabic-text text-gray-600 text-sm">جلسات مخصصة مصممة لتلبية أهدافك التعليمية الفردية، جدولك المفضل، ووتيرتك، يقدمها مدرسونا ذوو الخبرة العالية.</p>
                 </div>
                 <div class="card">
                     <h4 class="font-bold text-lg mb-3 text-blue-700 flex items-center"><i class="fas fa-briefcase mr-2 text-blue-600"></i> Business English</h4>
-                    <p class="text-gray-700 text-base">Crucial for professionals in Algerian companies engaging with international partners. Topics include effective meeting participation, negotiation strategies, and formal corporate communication.</p>
+                    <p class="text-gray-700 text-base mb-2">Crucial for professionals in Algerian companies engaging with international partners. Topics include effective meeting participation, negotiation strategies, and formal corporate communication.</p>
+                    <p class="arabic-text text-gray-600 text-sm">ضرورية للمهنيين في الشركات الجزائرية الذين يتعاملون مع الشركاء الدوليين. تشمل المواضيع المشاركة الفعالة في الاجتماعات، استراتيجيات التفاوض، والتواصل المؤسسي الرسمي.</p>
                 </div>
                 <div class="card">
                     <h4 class="font-bold text-lg mb-3 text-blue-700 flex items-center"><i class="fas fa-flask mr-2 text-blue-600"></i> ESP (Medical/Technical)</h4>
-                    <p class="text-gray-700 text-base">English for Specific Purposes, tailored for healthcare professionals, engineers, and IT specialists, focusing on industry-specific vocabulary and realistic scenarios.</p>
+                    <p class="text-gray-700 text-base mb-2">English for Specific Purposes, tailored for healthcare professionals, engineers, and IT specialists, focusing on industry-specific vocabulary and realistic scenarios.</p>
+                    <p class="arabic-text text-gray-600 text-sm">اللغة الإنجليزية لأغراض خاصة، مصممة للمتخصصين في الرعاية الصحية، المهندسين، وخبراء تكنولوجيا المعلومات، مع التركيز على المفردات الخاصة بالصناعة والسيناريوهات الواقعية.</p>
                 </div>
                 <div class="card">
                     <h4 class="font-bold text-lg mb-3 text-blue-700 flex items-center"><i class="fas fa-university mr-2 text-blue-600"></i> University Custom Programs</h4>
-                    <p class="text-gray-700 text-base">Bespoke courses developed for Algerian university departments requiring specialized English training for their academic staff and student body.</p>
+                    <p class="text-gray-700 text-base mb-2">Bespoke courses developed for Algerian university departments requiring specialized English training for their academic staff and student body.</p>
+                    <p class="arabic-text text-gray-600 text-sm">دورات مصممة خصيصًا لأقسام الجامعات الجزائرية التي تتطلب تدريبًا متخصصًا في اللغة الإنجليزية لأعضاء هيئاتها التدريسية وطلابها.</p>
                 </div>
             </div>
             <div class="mt-10 text-center">
@@ -304,7 +334,16 @@
             </h3>
             <div class="bg-blue-50 p-6 rounded-xl mb-6 border border-blue-100 shadow-sm">
                 <h4 class="font-bold text-xl mb-3 text-blue-800 flex items-center"><i class="fas fa-id-card-alt mr-2 text-blue-600"></i> Algerian Student Information</h4>
-                <p class="text-gray-700 text-base">For your convenience, our registration form is available in English, French, and Arabic. Please select your preferred language using the buttons at the top of the page before proceeding.</p>
+                <p class="text-gray-700 text-base mb-2">For your convenience, our registration form is available in English, French, and Arabic. Please select your preferred language using the buttons at the top of the page before proceeding.</p>
+                <p class="arabic-text text-gray-600 text-sm mb-2">
+                    لراحتكم، يتوفر نموذج التسجيل الخاص بنا باللغات الإنجليزية والفرنسية والعربية. يرجى اختيار لغتكم المفضلة باستخدام الأزرار الموجودة أعلى الصفحة قبل المتابعة.
+                </p>
+                <p class="text-gray-700 text-base font-semibold mt-4">
+                    Interested in our 100% digital, from-home Placement Test in all skills (reading, writing, speaking, listening)? Register your interest below to receive full details!
+                </p>
+                 <p class="arabic-text text-gray-600 text-sm mt-2">
+                    هل أنتم مهتمون باختبار تحديد المستوى الرقمي بالكامل من المنزل الذي يغطي جميع المهارات (القراءة، الكتابة، التحدث، الاستماع)؟ سجلوا اهتمامكم أدناه لتلقي التفاصيل الكاملة!
+                </p>
             </div>
             <div class="form-container rounded-lg overflow-hidden">
                 <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfNrs2BgQZPZ3JZuzFPqDr_byJo3lXaxK1v9Zjb9Jl2O-5jQw/viewform?embedded=true"
@@ -326,7 +365,8 @@
                 <a href="#" class="text-gray-500 hover:text-purple-700 transition duration-200"><i class="fab fa-instagram"></i></a>
             </div>
             <p class="text-sm sm:text-base">&copy; 2025 IRIS Language Academy. All rights reserved.</p>
-            <p class="mt-2 text-sm sm:text-base">Algiers, Algeria | Phone: <a href="tel:+213795369006" class="text-blue-700 hover:underline">+213 795 36 90 06</a></p>
+            <p class="mt-2 text-sm sm:text-base">Algiers, Algeria | Contact via form only</p>
+            <p class="mt-1 text-sm sm:text-base">WhatsApp: <a href="https://wa.me/213795369006" class="text-blue-700 hover:underline" target="_blank">+213 795 36 90 06</a></p>
             <p class="mt-2 text-sm sm:text-base font-medium">Dedicated to English learners in Algeria.</p>
         </footer>
     </div>
