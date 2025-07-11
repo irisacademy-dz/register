@@ -1,299 +1,407 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IRIS Language Academy - Course Schedule</title>
+    <title>IRIS Académie de Langues - Cours d'Allemand et d'Anglais</title>
     <style>
+        :root {
+            --primary: #6a11cb;
+            --secondary: #2575fc;
+            --accent: #ff6b6b;
+            --light: #f8f9fa;
+            --dark: #343a40;
+        }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f5f5f5;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f9f9f9;
             margin: 0;
-            padding: 20px;
+            padding: 0;
             color: #333;
+            line-height: 1.6;
         }
         .header {
-            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
-            padding: 30px;
+            padding: 40px 20px;
             text-align: center;
-            border-radius: 10px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .header::after {
+            content: "";
+            background: url('https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+            opacity: 0.15;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            z-index: 0;
+        }
+        .header-content {
+            position: relative;
+            z-index: 1;
         }
         h1 {
             margin: 0;
-            font-size: 2.5em;
+            font-size: 2.8em;
+            font-weight: 700;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+        .tagline {
+            font-size: 1.3em;
+            margin: 10px 0 0;
+            font-weight: 300;
         }
         h2 {
-            color: #2575fc;
-            border-bottom: 2px solid #2575fc;
-            padding-bottom: 10px;
-            margin-top: 40px;
+            color: var(--primary);
+            text-align: center;
+            margin: 40px 0 30px;
+            font-size: 2em;
+            position: relative;
         }
-        .course-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 25px 0;
-            font-size: 1.1em;
-            min-width: 400px;
-            border-radius: 10px;
+        h2::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            margin: 15px auto 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin: 40px 0;
+        }
+        .card {
+            background: white;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 0 20px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            width: 350px;
         }
-        .course-table thead tr {
-            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-            color: #ffffff;
-            text-align: left;
-            font-weight: bold;
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
         }
-        .course-table th, 
-        .course-table td {
-            padding: 15px 20px;
+        .card-image {
+            height: 200px;
+            overflow: hidden;
         }
-        .course-table tbody tr {
-            border-bottom: 1px solid #dddddd;
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
         }
-        .course-table tbody tr:nth-of-type(even) {
-            background-color: #f3f3f3;
+        .card:hover .card-image img {
+            transform: scale(1.05);
         }
-        .course-table tbody tr:last-of-type {
-            border-bottom: 2px solid #6a11cb;
+        .card-content {
+            padding: 25px;
         }
-        .course-table tbody tr:hover {
-            background-color: #e6f0ff;
-            transform: scale(1.01);
-            transition: all 0.2s ease;
+        .card h3 {
+            color: var(--primary);
+            margin-top: 0;
+            font-size: 1.5em;
         }
-        .level-A1 { background-color: #ffdddd; }
-        .level-A2 { background-color: #ffffcc; }
-        .level-B1 { background-color: #ddffdd; }
-        .level-B2 { background-color: #ddddff; }
-        .level-C1 { background-color: #ffddff; }
-        .level-C2 { background-color: #ffcc99; }
-        .cta {
-            background-color: #4CAF50;
-            color: white;
-            padding: 15px 25px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 18px;
-            margin: 20px 0;
-            border-radius: 5px;
-            transition: all 0.3s;
-        }
-        .cta:hover {
-            background-color: #45a049;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-        .contact-info {
-            background-color: #f8f9fa;
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 30px;
-            border-left: 5px solid #2575fc;
-        }
-        .footer {
-            text-align: center;
-            margin-top: 50px;
-            padding: 20px;
+        .card p {
             color: #666;
+            margin-bottom: 20px;
+        }
+        .level-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
             font-size: 0.9em;
         }
+        .A1 { background-color: #ffebee; color: #d32f2f; }
+        .A2 { background-color: #e8f5e9; color: #388e3c; }
+        .B1 { background-color: #e3f2fd; color: #1976d2; }
+        .B2 { background-color: #ede7f6; color: #7b1fa2; }
+        .C1 { background-color: #fff3e0; color: #ff8f00; }
+        .C2 { background-color: #efebe9; color: #6d4c41; }
+        .info-box {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 40px auto;
+            max-width: 800px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--accent);
+            text-align: center;
+        }
+        .info-box h3 {
+            color: var(--primary);
+            margin-top: 0;
+            font-size: 1.8em;
+        }
+        .highlight {
+            background-color: #fffde7;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+        .cta-container {
+            text-align: center;
+            margin: 50px 0;
+        }
+        .cta {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 18px 35px;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(41, 117, 252, 0.4);
+            margin: 10px;
+        }
+        .cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(41, 117, 252, 0.6);
+        }
+        .cta-secondary {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            box-shadow: none;
+        }
+        .contact-info {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+            padding: 40px;
+            border-radius: 15px;
+            margin: 50px auto;
+            max-width: 800px;
+            text-align: center;
+        }
+        .contact-item {
+            margin: 20px 0;
+            font-size: 1.2em;
+        }
+        .contact-item a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .contact-item a:hover {
+            color: var(--secondary);
+            text-decoration: underline;
+        }
+        .whatsapp-btn {
+            background-color: #25D366;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: all 0.3s;
+        }
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+        }
+        .whatsapp-btn i {
+            margin-right: 10px;
+            font-size: 1.5em;
+        }
+        .footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+        }
+        .language-icons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        .language-icon {
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .language-icon:hover {
+            transform: scale(1.1);
+        }
+        .language-icon img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+        @media (max-width: 768px) {
+            .card {
+                width: 100%;
+            }
+            h1 {
+                font-size: 2em;
+            }
+        }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <div class="header">
-        <h1>IRIS Language Academy</h1>
-        <p>Your journey to language mastery starts here</p>
+        <div class="header-content">
+            <h1>IRIS Académie de Langues</h1>
+            <p class="tagline">Votre voyage linguistique commence ici</p>
+        </div>
     </div>
 
-    <h2>German Courses Schedule</h2>
-    <table class="course-table">
-        <thead>
-            <tr>
-                <th>Course Level</th>
-                <th>Sublevel</th>
-                <th>Start Date</th>
-                <th>Duration</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="level-A1">
-                <td rowspan="3">A1 (Beginner)</td>
-                <td>A1.1</td>
-                <td>01 August 2025</td>
-                <td>4 weeks</td>
-            </tr>
-            <tr class="level-A1">
-                <td>A1.2</td>
-                <td>01 September 2025</td>
-                <td>4 weeks</td>
-            </tr>
-            <tr class="level-A1">
-                <td>A1.3</td>
-                <td>01 October 2025</td>
-                <td>4 weeks</td>
-            </tr>
-            <tr class="level-A2">
-                <td rowspan="3">A2 (Elementary)</td>
-                <td>A2.1</td>
-                <td>01 November 2025</td>
-                <td>4 weeks</td>
-            </tr>
-            <tr class="level-A2">
-                <td>A2.2</td>
-                <td>01 December 2025</td>
-                <td>4 weeks</td>
-            </tr>
-            <tr class="level-A2">
-                <td>A2.3</td>
-                <td>01 January 2026</td>
-                <td>4 weeks</td>
-            </tr>
-            <tr class="level-B1">
-                <td rowspan="3">B1 (Intermediate)</td>
-                <td>B1.1</td>
-                <td>01 February 2026</td>
-                <td>4 weeks</td>
-            </tr>
-            <tr class="level-B1">
-                <td>B1.2</td>
-                <td>01 March 2026</td>
-                <td>4 weeks</td>
-            </tr>
-            <tr class="level-B1">
-                <td>B1.3</td>
-                <td>01 April 2026</td>
-                <td>4 weeks</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="container">
+        <h2>Nos Programmes de Langues</h2>
+        
+        <div class="info-box">
+            <h3>📅 Dates de Début des Cours</h3>
+            <p>Tous les nouveaux sous-niveaux commencent le <span class="highlight">4 de chaque mois</span> !</p>
+            <p>Plusieurs créneaux horaires disponibles (matin, après-midi, soirée).</p>
+            <p>Contactez-nous pour un test de niveau gratuit et des recommandations personnalisées.</p>
+        </div>
 
-    <h2>English Courses Schedule</h2>
-    <table class="course-table">
-        <thead>
-            <tr>
-                <th>Course Level</th>
-                <th>Sublevel</th>
-                <th>Start Date</th>
-                <th>Duration</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="level-A1">
-                <td rowspan="3">A1 (Beginner)</td>
-                <td>A1.1</td>
-                <td>01 August 2025</td>
-                <td>4 weeks</td>
-            </tr>
-            <tr class="level-A1">
-                <td>A1.2</td>
-                <td>01 September 2025</td>
-                <td>4 weeks</td>
-            </tr>
-            <tr class="level-A1">
-                <td>A1.3</td>
-                <td>01 October 2025</td>
-                <td>4 weeks</td>
-            </tr>
-            <tr class="level-A2">
-                <td rowspan="3">A2 (Elementary)</td>
-                <td>A2.1</td>
-                <td>01 November 2025</td>
-                <td>4 weeks</td>
-            </tr>
-            <tr class="level-A2">
-                <td>A2.2</td>
-                <td>01 December 2025</td>
-                <td>4 weeks</td>
-            </tr>
-            <tr class="level-A2">
-                <td>A2.3</td>
-                <td>01 January 2026</td>
-                <td>4 weeks</td>
-            </tr>
-            <tr class="level-B1">
-                <td rowspan="3">B1 (Intermediate)</td>
-                <td>B1.1</td>
-                <td>01 February 2026</td>
-                <td>4 weeks</td>
-            </tr>
-            <tr class="level-B1">
-                <td>B1.2</td>
-                <td>01 March 2026</td>
-                <td>4 weeks</td>
-            </tr>
-            <tr class="level-B1">
-                <td>B1.3</td>
-                <td>01 April 2026</td>
-                <td>4 weeks</td>
-            </tr>
-            <tr class="level-B2">
-                <td rowspan="3">B2 (Upper Intermediate)</td>
-                <td>B2.1</td>
-                <td>01 May 2026</td>
-                <td>4 weeks</td>
-            </tr>
-            <tr class="level-B2">
-                <td>B2.2</td>
-                <td>01 June 2026</td>
-                <td>4 weeks</td>
-            </tr>
-            <tr class="level-B2">
-                <td>B2.3</td>
-                <td>01 July 2026</td>
-                <td>4 weeks</td>
-            </tr>
-            <tr class="level-C1">
-                <td rowspan="3">C1 (Advanced)</td>
-                <td>C1.1</td>
-                <td>01 August 2026</td>
-                <td>4 weeks</td>
-            </tr>
-            <tr class="level-C1">
-                <td>C1.2</td>
-                <td>01 September 2026</td>
-                <td>4 weeks</td>
-            </tr>
-            <tr class="level-C1">
-                <td>C1.3</td>
-                <td>01 October 2026</td>
-                <td>4 weeks</td>
-            </tr>
-            <tr class="level-C2">
-                <td rowspan="3">C2 (Proficiency)</td>
-                <td>C2.1</td>
-                <td>01 November 2026</td>
-                <td>4 weeks</td>
-            </tr>
-            <tr class="level-C2">
-                <td>C2.2</td>
-                <td>01 December 2026</td>
-                <td>4 weeks</td>
-            </tr>
-            <tr class="level-C2">
-                <td>C2.3</td>
-                <td>01 January 2027</td>
-                <td>4 weeks</td>
-            </tr>
-        </tbody>
-    </table>
+        <div class="card-container">
+            <!-- Allemand A1 -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1528543606781-2f6e6857f318?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Apprentissage de l'allemand">
+                </div>
+                <div class="card-content">
+                    <span class="level-badge A1">Niveau A1</span>
+                    <h3>Allemand Débutant</h3>
+                    <p>Apprenez les bases de l'allemand avec nos professeurs expérimentés. Parfait pour les vrais débutants.</p>
+                    <p><strong>Sous-niveaux:</strong> A1.1, A1.2, A1.3</p>
+                </div>
+            </div>
 
-    <div style="text-align: center;">
-        <a href="https://forms.gle/5AxQ42yH5T9UWZwp6" class="cta">Enroll Now!</a>
-    </div>
+            <!-- Allemand A2 -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1508511267-5df7095a7fbc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Cours d'allemand intermédiaire">
+                </div>
+                <div class="card-content">
+                    <span class="level-badge A2">Niveau A2</span>
+                    <h3>Allemand Élémentaire</h3>
+                    <p>Approfondissez vos connaissances et apprenez à communiquer dans des situations quotidiennes.</p>
+                    <p><strong>Sous-niveaux:</strong> A2.1, A2.2, A2.3</p>
+                </div>
+            </div>
 
-    <div class="contact-info">
-        <h3>Contact Information</h3>
-        <p><strong>WhatsApp:</strong> <a href="https://wa.me/213795369006">+213 795 36 90 06</a></p>
-        <p><strong>Enrollment Link:</strong> <a href="https://forms.gle/5AxQ42yH5T9UWZwp6">https://forms.gle/5AxQ42yH5T9UWZwp6</a></p>
+            <!-- Allemand B1 -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1549923746-c502d488b3ea?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Étudiants en allemand avancé">
+                </div>
+                <div class="card-content">
+                    <span class="level-badge B1">Niveau B1</span>
+                    <h3>Allemand Intermédiaire</h3>
+                    <p>Développez votre aisance et apprenez à exprimer des opinions et à comprendre des textes complexes.</p>
+                    <p><strong>Sous-niveaux:</strong> B1.1, B1.2, B1.3</p>
+                </div>
+            </div>
+
+            <!-- Anglais A1 -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Cours d'anglais débutant">
+                </div>
+                <div class="card-content">
+                    <span class="level-badge A1">Niveau A1</span>
+                    <h3>Anglais Débutant</h3>
+                    <p>Commencez votre voyage en anglais avec des bases solides et une méthode interactive.</p>
+                    <p><strong>Sous-niveaux:</strong> A1.1, A1.2, A1.3</p>
+                </div>
+            </div>
+
+            <!-- Anglais A2 -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Groupe apprenant l'anglais">
+                </div>
+                <div class="card-content">
+                    <span class="level-badge A2">Niveau A2</span>
+                    <h3>Anglais Élémentaire</h3>
+                    <p>Améliorez votre compréhension et votre expression dans des contextes variés.</p>
+                    <p><strong>Sous-niveaux:</strong> A2.1, A2.2, A2.3</p>
+                </div>
+            </div>
+
+            <!-- Anglais B1 -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Conversation en anglais">
+                </div>
+                <div class="card-content">
+                    <span class="level-badge B1">Niveau B1</span>
+                    <h3>Anglais Intermédiaire</h3>
+                    <p>Atteignez l'autonomie en anglais et communiquez avec confiance dans divers situations.</p>
+                    <p><strong>Sous-niveaux:</strong> B1.1, B1.2, B1.3</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="language-icons">
+            <div class="language-icon">
+                <img src="https://cdn-icons-png.flaticon.com/512/197/197571.png" alt="Allemand">
+                <p>Allemand</p>
+            </div>
+            <div class="language-icon">
+                <img src="https://cdn-icons-png.flaticon.com/512/197/197374.png" alt="Anglais">
+                <p>Anglais</p>
+            </div>
+            <div class="language-icon">
+                <img src="https://cdn-icons-png.flaticon.com/512/814/814513.png" alt="Livres">
+                <p>Matériel pédagogique</p>
+            </div>
+            <div class="language-icon">
+                <img src="https://cdn-icons-png.flaticon.com/512/2702/2702069.png" alt="Dictionnaire">
+                <p>Ressources</p>
+            </div>
+        </div>
+
+        <div class="cta-container">
+            <a href="https://forms.gle/5AxQ42yH5T9UWZwp6" class="cta">S'inscrire Maintenant</a>
+            <a href="#contact" class="cta cta-secondary">Plus d'Informations</a>
+        </div>
+
+        <div class="contact-info" id="contact">
+            <h3>Contactez-nous</h3>
+            <div class="contact-item">
+                <p><i class="fas fa-link"></i> Lien d'inscription: 
+                    <a href="https://forms.gle/5AxQ42yH5T9UWZwp6">forms.gle/5AxQ42yH5T9UWZwp6</a>
+                </p>
+            </div>
+            <div class="contact-item">
+                <p><i class="fas fa-phone-alt"></i> Téléphone: +213 795 36 90 06</p>
+            </div>
+            <a href="https://wa.me/213795369006" class="whatsapp-btn">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+        </div>
     </div>
 
     <div class="footer">
-        <p>© 2025 IRIS Language Academy. All rights reserved.</p>
+        <p>© 2025 IRIS Académie de Langues. Tous droits réservés.</p>
+        <p>Apprendre. Communiquer. S'épanouir.</p>
     </div>
 </body>
 </html>
