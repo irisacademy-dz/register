@@ -3,464 +3,254 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IRIS Language Academy - English Courses for Algerian Learners</title>
+    <title>IRIS Language Academy - English & German Training</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
-            font-family: 'Open Sans', sans-serif;
-            background-color: #f8faff; /* Lighter, subtle background */
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column; /* Allow content to flow naturally */
-            align-items: center;
-            justify-content: flex-start; /* Align content to top */
-            padding: 1rem;
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+            color: #111827;
         }
-        h1, h2, h3, h4 {
-            font-family: 'Merriweather', serif; /* Serif font for headings */
+        .gradient-text {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            background-image: linear-gradient(90deg, #3b82f6, #10b981);
         }
-        .container-wrapper {
-            background-color: #ffffff;
-            border-radius: 1.5rem; /* More subtle rounding */
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Softer shadow */
-            width: 100%;
-            max-width: 72rem; /* Increased max-width for wider layout on large screens */
-            transition: all 0.3s ease-in-out;
-            padding: 2.5rem; /* Increased padding */
+        .card-hover {
+            transition: all 0.3s ease;
         }
-        @media (min-width: 640px) { /* sm breakpoint */
-            .container-wrapper {
-                padding: 3rem;
-            }
-        }
-        @media (min-width: 1024px) { /* lg breakpoint */
-            .container-wrapper {
-                padding: 4rem;
-            }
-        }
-        .form-container {
-            position: relative;
-            width: 100%;
-            padding-bottom: 150%; /* Default for mobile/portrait aspect */
-            height: 0;
-            overflow: hidden;
-            border-radius: 0.75rem; /* Rounded corners for iframe container */
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Subtle shadow for form */
-        }
-        .form-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-        @media (min-width: 768px) {
-            .form-container {
-                padding-bottom: 90%; /* Adjust for tablets */
-            }
-        }
-        @media (min-width: 1024px) {
-            .form-container {
-                padding-bottom: 60%; /* Adjust for laptops, closer to 16:9 */
-            }
-        }
-        html {
-            scroll-behavior: smooth;
-        }
-        .language-switcher {
-            position: absolute;
-            top: 1rem; /* Adjust position */
-            right: 1rem; /* Adjust position */
-            z-index: 10; /* Ensure it's above other content */
-        }
-        .flag-icon {
-            width: 20px; /* Slightly smaller flags */
-            height: 20px;
-            margin-right: 6px; /* Reduced margin */
-            vertical-align: middle;
-            border-radius: 3px; /* Slightly rounded flag corners */
-            box-shadow: 0 0 3px rgba(0, 0, 0, 0.1); /* Subtle shadow for flags */
-        }
-        /* Custom Button Style */
-        .btn-primary {
-            @apply bg-blue-700 text-white font-semibold py-3 px-7 rounded-full shadow-md transition duration-300 ease-in-out hover:bg-blue-800 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75;
-        }
-        .btn-secondary {
-            @apply bg-green-700 text-white font-semibold py-3 px-7 rounded-full shadow-md transition duration-300 ease-in-out hover:bg-green-800 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-75;
-        }
-        /* New red button style for placement test */
-        .btn-placement-test {
-            @apply bg-red-600 text-white font-bold py-4 px-8 rounded-full shadow-lg transition duration-300 ease-in-out hover:bg-red-700 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-red-300 focus:ring-opacity-75 animate-bounce-slow; /* Added bounce animation */
-        }
-
-        .card {
-            @apply bg-white p-6 rounded-lg shadow-sm border border-gray-100 transition duration-300 ease-in-out hover:shadow-md;
-        }
-        /* Arabic text specific styling */
-        .arabic-text {
-            direction: rtl;
-            text-align: right;
-            font-family: 'Open Sans', sans-serif; /* Keep consistent font or specify an Arabic one if needed */
-        }
-
-        /* Keyframe for slow bounce animation */
-        @keyframes bounce-slow {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-5px); /* Smaller bounce for subtlety */
-            }
-        }
-        .animate-bounce-slow {
-            animation: bounce-slow 2s infinite ease-in-out;
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
-<body class="flex flex-col items-center justify-center">
-
-    <div class="container-wrapper relative">
-        <div class="language-switcher flex space-x-2">
-            <button onclick="toggleLanguage('en')" class="bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-1.5 px-3 rounded-full text-sm flex items-center">
-                <img src="https://flagcdn.com/w20/gb.png" class="flag-icon" alt="English"> EN
-            </button>
-            <button onclick="toggleLanguage('fr')" class="bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-1.5 px-3 rounded-full text-sm flex items-center">
-                <img src="https://flagcdn.com/w20/fr.png" class="flag-icon" alt="French"> FR
-            </button>
-            <button onclick="toggleLanguage('ar')" class="bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-1.5 px-3 rounded-full text-sm flex items-center">
-                <img src="https://flagcdn.com/w20/dz.png" class="flag-icon" alt="Arabic"> AR
-            </button>
-        </div>
-
-        <header class="text-center mb-12 pt-8">
-            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-4 leading-tight">
-                IRIS Language Academy
+<body class="min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <!-- Header -->
+        <header class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">
+                <span class="gradient-text">IRIS Language Academy</span>
             </h1>
-            <p class="text-xl sm:text-2xl text-blue-800 font-normal tracking-wide max-w-2xl mx-auto">
-                Your Trusted Path to English Fluency in Algeria
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                Professional English & German language training for all levels
             </p>
-            <div class="mt-6 flex flex-col sm:flex-row justify-center items-center space-y-2 sm:space-y-0 sm:space-x-6 text-gray-600 text-lg">
-                <div class="flex items-center">
-                    <i class="fas fa-check-circle text-green-600 mr-2"></i>
-                    <span>Algerian-certified instructors</span>
-                </div>
-                <div class="flex items-center">
-                    <i class="fas fa-check-circle text-green-600 mr-2"></i>
-                    <span>Convenient local payment methods</span>
-                </div>
-            </div>
         </header>
 
-        <section class="text-center mb-16">
-            <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-6">
-                Elevate Your English Skills Online
-            </h2>
-            <p class="text-lg sm:text-xl text-gray-700 leading-relaxed max-w-4xl mx-auto mb-8">
-                Welcome to Algeria's premier English learning platform. At IRIS Language Academy, we recognize the distinct learning context for Algerian students and have meticulously crafted courses to meet your specific needs.
-            </p>
-            <div class="bg-yellow-50 border-l-4 border-yellow-400 p-5 text-left max-w-3xl mx-auto rounded-md shadow-sm">
-                <div class="flex items-start">
-                    <div class="flex-shrink-0 mt-1">
-                        <i class="fas fa-info-circle text-yellow-600 text-2xl"></i>
-                    </div>
-                    <div class="ml-4">
-                        <p class="text-base text-yellow-800 font-semibold">
-                            Special Enrollment Offer:
-                        </p>
-                        <p class="text-sm text-yellow-700 mt-1">
-                            Receive a <strong class="text-yellow-900">10% discount</strong> when enrolling and paying for 3 sublevels upfront using local Algerian payment methods (CCP, CIB, etc.).
-                        </p>
-                    </div>
-                </div>
+        <!-- Language Tabs -->
+        <div class="flex justify-center mb-12">
+            <div class="inline-flex rounded-lg bg-gray-100 p-1">
+                <button class="px-4 py-2 rounded-md font-medium text-white bg-blue-600">English</button>
+                <button class="px-4 py-2 rounded-md font-medium text-gray-700 hover:bg-gray-200">German</button>
             </div>
-        </section>
+        </div>
 
-        <section class="mb-16 bg-red-50 p-8 rounded-xl border border-red-200 shadow-lg text-center">
-            <h3 class="text-3xl sm:text-4xl font-bold text-red-800 mb-6">
-                Why Take Our Digital Placement Test?
-            </h3>
-            <p class="text-lg sm:text-xl text-red-700 leading-relaxed max-w-4xl mx-auto mb-8">
-                Not sure where to begin your English learning journey? Our comprehensive digital placement test is designed to accurately assess your current English proficiency in all key skills:
-            </p>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow-md border border-red-100">
-                    <i class="fas fa-book-reader text-red-600 text-4xl mb-3"></i>
-                    <p class="font-semibold text-gray-800">Reading Comprehension</p>
-                </div>
-                <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow-md border border-red-100">
-                    <i class="fas fa-pencil-alt text-red-600 text-4xl mb-3"></i>
-                    <p class="font-semibold text-gray-800">Writing Skills</p>
-                </div>
-                <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow-md border border-red-100">
-                    <i class="fas fa-microphone-alt text-red-600 text-4xl mb-3"></i>
-                    <p class="font-semibold text-gray-800">Speaking Fluency</p>
-                </div>
-                <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow-md border border-red-100">
-                    <i class="fas fa-headphones-alt text-red-600 text-4xl mb-3"></i>
-                    <p class="font-semibold text-gray-800">Listening Skills</p>
-                </div>
-            </div>
-            <p class="text-lg sm:text-xl text-red-700 leading-relaxed max-w-4xl mx-auto">
-                Upon completion, you'll receive a detailed report and a personalized recommendation for the perfect course level (A1, A2, B1, B2, or C1), ensuring you start at the right place for maximum progress.
-            </p>
-            <p class="arabic-text text-red-600 text-lg mt-4">
-                هل أنت غير متأكد من أين تبدأ رحلتك لتعلم اللغة الإنجليزية؟ تم تصميم اختبار تحديد المستوى الرقمي الشامل لدينا لتقييم كفاءتك الحالية في اللغة الإنجليزية بدقة في جميع المهارات الأساسية: القراءة، الكتابة، التحدث، والاستماع.
-                عند الانتهاء، ستتلقى تقريرًا مفصلاً وتوصية مخصصة لمستوى الدورة المثالي (A1، A2، B1، B2، أو C1)، مما يضمن أن تبدأ في المكان الصحيح لتحقيق أقصى تقدم.
-            </p>
-            <div class="mt-10">
-                <button onclick="scrollToForm()" class="btn-placement-test inline-flex items-center">
-                    <i class="fas fa-edit mr-3 text-2xl"></i> REGISTER FOR OUR PLACEMENT TEST NOW!
-                </button>
-            </div>
-        </section>
-
-
-        <section class="mb-16">
-            <h3 class="text-center text-3xl sm:text-4xl font-bold text-gray-800 mb-10">
-                Our General English Course Structure
-            </h3>
+        <!-- Courses Section -->
+        <section class="mb-20">
+            <h2 class="text-2xl md:text-3xl font-bold text-center mb-12">Our Language Programs</h2>
             
-            <div class="bg-blue-50 p-7 rounded-xl mb-10 border border-blue-100 shadow-md">
-                <h4 class="font-bold text-2xl mb-4 text-blue-800 flex items-center"><i class="fas fa-clipboard-list text-blue-600 mr-3"></i> Core Course Information</h4>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-700">
-                    <div class="flex items-start">
-                        <i class="fas fa-money-bill-wave text-blue-600 mt-1 mr-3 text-lg"></i>
-                        <div>
-                            <p class="font-semibold text-lg">Consistent Pricing Across All Levels</p>
-                            <p class="text-base">Each sublevel (A1 to C1) is priced at <strong class="text-blue-800">6,000 DZD</strong>.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start">
-                        <i class="fas fa-clock text-blue-600 mt-1 mr-3 text-lg"></i>
-                        <div>
-                            <p class="font-semibold text-lg">Comprehensive Learning Experience</p>
-                            <p class="text-base">Includes 10 live interactive sessions (2 hours each) plus 20 hours of engaging self-paced platform activities per sublevel.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="card flex flex-col items-center text-center">
-                    <h4 class="text-2xl font-bold text-blue-800 mb-3">Beginner (A1)</h4>
-                    <p class="text-gray-700 mb-2 flex-grow">
-                        Can understand and use familiar everyday expressions and very basic phrases aimed at the satisfaction of needs of a concrete type. Can introduce him/herself and others and can ask and answer questions about personal details.
-                    </p>
-                    <p class="arabic-text text-gray-600 text-sm mb-4">
-                        يمكنه فهم واستخدام التعبيرات اليومية المألوفة والعبارات الأساسية جدًا التي تهدف إلى تلبية احتياجات من نوع ملموس. يمكنه تقديم نفسه والآخرين، ويمكنه طرح أسئلة والإجابة عليها حول التفاصيل الشخصية.
-                    </p>
-                    <div class="w-full text-left text-sm text-gray-600 mb-4">
-                        <p class="mb-1"><i class="fas fa-money-bill-alt mr-2 text-blue-600"></i> 6,000 DZD/sublevel</p>
-                        <p><i class="fas fa-chalkboard-teacher mr-2 text-blue-600"></i> 20h live + 20h platform</p>
+                <!-- General English -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 p-2 rounded-lg mr-4">
+                                <i class="fas fa-language text-blue-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">General English</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Comprehensive English training from A1 to C2 levels with certified instructors.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-blue-50 text-blue-700 text-sm rounded-full">A1-C2</span>
+                            <span class="px-3 py-1 bg-blue-50 text-blue-700 text-sm rounded-full">20h live</span>
+                            <span class="px-3 py-1 bg-blue-50 text-blue-700 text-sm rounded-full">20h platform</span>
+                        </div>
+                        <button class="w-full mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                            Learn More
+                        </button>
                     </div>
-                    <button onclick="scrollToForm()" class="btn-placement-test w-full flex items-center justify-center text-center">
-                        <i class="fas fa-file-alt mr-2"></i> <span class="text-left">Register for Digital Placement Test</span>
-                    </button>
                 </div>
 
-                <div class="card flex flex-col items-center text-center">
-                    <h4 class="text-2xl font-bold text-blue-800 mb-3">Elementary (A2)</h4>
-                    <p class="text-gray-700 mb-2 flex-grow">
-                        Can understand sentences and frequently used expressions related to areas of most immediate relevance (e.g. basic personal and family information, shopping, local geography, employment). Can communicate in simple and routine tasks.
-                    </p>
-                    <p class="arabic-text text-gray-600 text-sm mb-4">
-                        يمكنه فهم الجمل والتعبيرات الشائعة الاستخدام المتعلقة بالمجالات ذات الصلة المباشرة (مثل المعلومات الشخصية والعائلية الأساسية، التسوق، الجغرافيا المحلية، العمل). يمكنه التواصل في مهام بسيطة وروتينية.
-                    </p>
-                    <div class="w-full text-left text-sm text-gray-600 mb-4">
-                        <p class="mb-1"><i class="fas fa-money-bill-alt mr-2 text-blue-600"></i> 6,000 DZD/sublevel</p>
-                        <p><i class="fas fa-chalkboard-teacher mr-2 text-blue-600"></i> 20h live + 20h platform</p>
+                <!-- General German -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-green-100 p-2 rounded-lg mr-4">
+                                <i class="fas fa-language text-green-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">General German</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Complete German courses from beginner to advanced levels (A1-C2).</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-green-50 text-green-700 text-sm rounded-full">A1-C2</span>
+                            <span class="px-3 py-1 bg-green-50 text-green-700 text-sm rounded-full">20h live</span>
+                            <span class="px-3 py-1 bg-green-50 text-green-700 text-sm rounded-full">20h platform</span>
+                        </div>
+                        <button class="w-full mt-4 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">
+                            Learn More
+                        </button>
                     </div>
-                    <button onclick="scrollToForm()" class="btn-placement-test w-full flex items-center justify-center text-center">
-                        <i class="fas fa-file-alt mr-2"></i> <span class="text-left">Register for Digital Placement Test</span>
-                    </button>
                 </div>
 
-                <div class="card flex flex-col items-center text-center">
-                    <h4 class="text-2xl font-bold text-blue-800 mb-3">Pre-Intermediate (B1)</h4>
-                    <p class="text-gray-700 mb-2 flex-grow">
-                        Can understand the main points of clear standard input on familiar matters regularly encountered in work, school, leisure, etc. Can deal with most situations likely to arise whilst travelling in an area where the language is spoken.
-                    </p>
-                    <p class="arabic-text text-gray-600 text-sm mb-4">
-                        يمكنه فهم النقاط الرئيسية للمدخلات القياسية الواضحة حول الأمور المألوفة التي تواجه بانتظام في العمل، المدرسة، الترفيه، وما إلى ذلك. يمكنه التعامل مع معظم المواقف التي قد تنشأ أثناء السفر في منطقة يتحدث فيها اللغة.
-                    </p>
-                    <div class="w-full text-left text-sm text-gray-600 mb-4">
-                        <p class="mb-1"><i class="fas fa-money-bill-alt mr-2 text-blue-600"></i> 6,000 DZD/sublevel</p>
-                        <p><i class="fas fa-chalkboard-teacher mr-2 text-blue-600"></i> 20h live + 20h platform</p>
+                <!-- English for Medical -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-red-100 p-2 rounded-lg mr-4">
+                                <i class="fas fa-briefcase-medical text-red-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Medical English</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Specialized English for healthcare professionals with medical terminology.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-red-50 text-red-700 text-sm rounded-full">B1-C1</span>
+                            <span class="px-3 py-1 bg-red-50 text-red-700 text-sm rounded-full">Medical terms</span>
+                            <span class="px-3 py-1 bg-red-50 text-red-700 text-sm rounded-full">Case studies</span>
+                        </div>
+                        <button class="w-full mt-4 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition">
+                            Learn More
+                        </button>
                     </div>
-                    <button onclick="scrollToForm()" class="btn-placement-test w-full flex items-center justify-center text-center">
-                        <i class="fas fa-file-alt mr-2"></i> <span class="text-left">Register for Digital Placement Test</span>
-                    </button>
                 </div>
 
-                <div class="card flex flex-col items-center text-center">
-                    <h4 class="text-2xl font-bold text-blue-800 mb-3">Intermediate (B2)</h4>
-                    <p class="text-gray-700 mb-2 flex-grow">
-                        Can understand the main ideas of complex text on both concrete and abstract topics, including technical discussions in his/her field of specialization. Can interact with a degree of fluency and spontaneity.
-                    </p>
-                    <p class="arabic-text text-gray-600 text-sm mb-4">
-                        يمكنه فهم الأفكار الرئيسية للنصوص المعقدة حول المواضيع الملموسة والمجردة، بما في ذلك المناقشات التقنية في مجال تخصصه. يمكنه التفاعل بدرجة من الطلاقة والعفوية.
-                    </p>
-                    <div class="w-full text-left text-sm text-gray-600 mb-4">
-                        <p class="mb-1"><i class="fas fa-money-bill-alt mr-2 text-blue-600"></i> 6,000 DZD/sublevel</p>
-                        <p><i class="fas fa-chalkboard-teacher mr-2 text-blue-600"></i> 20h live + 20h platform</p>
+                <!-- German for Medical -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-purple-100 p-2 rounded-lg mr-4">
+                                <i class="fas fa-briefcase-medical text-purple-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Medical German</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Specialized German for doctors and nurses planning to work in Germany.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-purple-50 text-purple-700 text-sm rounded-full">B1-C1</span>
+                            <span class="px-3 py-1 bg-purple-50 text-purple-700 text-sm rounded-full">Medical terms</span>
+                            <span class="px-3 py-1 bg-purple-50 text-purple-700 text-sm rounded-full">Patient cases</span>
+                        </div>
+                        <button class="w-full mt-4 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition">
+                            Learn More
+                        </button>
                     </div>
-                    <button onclick="scrollToForm()" class="btn-placement-test w-full flex items-center justify-center text-center">
-                        <i class="fas fa-file-alt mr-2"></i> <span class="text-left">Register for Digital Placement Test</span>
-                    </button>
                 </div>
 
-                <div class="card flex flex-col items-center text-center">
-                    <h4 class="text-2xl font-bold text-blue-800 mb-3">Upper-Intermediate (C1)</h4>
-                    <p class="text-gray-700 mb-2 flex-grow">
-                        Can understand a wide range of demanding, longer texts, and recognize implicit meaning. Can express him/herself fluently and spontaneously without much obvious searching for expressions.
-                    </p>
-                    <p class="arabic-text text-gray-600 text-sm mb-4">
-                        يمكنه فهم مجموعة واسعة من النصوص الطويلة والمتطلبة، والتعرف على المعنى الضمني. يمكنه التعبير عن نفسه بطلاقة وعفوية دون عناء كبير في البحث عن التعبيرات.
-                    </p>
-                    <div class="w-full text-left text-sm text-gray-600 mb-4">
-                        <p class="mb-1"><i class="fas fa-money-bill-alt mr-2 text-blue-600"></i> 6,000 DZD/sublevel</p>
-                        <p><i class="fas fa-chalkboard-teacher mr-2 text-blue-600"></i> 20h live + 20h platform</p>
+                <!-- Business English -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-yellow-100 p-2 rounded-lg mr-4">
+                                <i class="fas fa-chart-line text-yellow-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Business English</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Corporate communication, negotiations, and professional email writing.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-yellow-50 text-yellow-700 text-sm rounded-full">B1-C2</span>
+                            <span class="px-3 py-1 bg-yellow-50 text-yellow-700 text-sm rounded-full">Meetings</span>
+                            <span class="px-3 py-1 bg-yellow-50 text-yellow-700 text-sm rounded-full">Presentations</span>
+                        </div>
+                        <button class="w-full mt-4 px-4 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transition">
+                            Learn More
+                        </button>
                     </div>
-                    <button onclick="scrollToForm()" class="btn-placement-test w-full flex items-center justify-center text-center">
-                        <i class="fas fa-file-alt mr-2"></i> <span class="text-left">Register for Digital Placement Test</span>
-                    </button>
                 </div>
 
-                <div class="bg-gray-50 p-6 rounded-lg shadow-sm border border-gray-200 flex flex-col items-center text-center">
-                    <h4 class="text-2xl font-bold text-gray-700 mb-3">Specialized Programs</h4>
-                    <p class="text-gray-600 mb-5 flex-grow">
-                        We are continuously developing new specialized courses based on demand. Reach out to us to inquire about our upcoming programs.
-                    </p>
-                    <p class="arabic-text text-gray-600 text-sm mb-4">
-                        نحن نعمل باستمرار على تطوير دورات متخصصة جديدة بناءً على الطلب. تواصلوا معنا للاستفسار عن برامجنا القادمة.
-                    </p>
-                    <button onclick="scrollToForm()" class="btn-secondary w-full bg-gray-500 hover:bg-gray-600">
-                        <i class="fas fa-envelope mr-2"></i> Inquire Here
-                    </button>
+                <!-- Technical German -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-indigo-100 p-2 rounded-lg mr-4">
+                                <i class="fas fa-cogs text-indigo-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Technical German</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">German for engineers and technical professionals with industry vocabulary.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-indigo-50 text-indigo-700 text-sm rounded-full">B1-C2</span>
+                            <span class="px-3 py-1 bg-indigo-50 text-indigo-700 text-sm rounded-full">Engineering</span>
+                            <span class="px-3 py-1 bg-indigo-50 text-indigo-700 text-sm rounded-full">IT</span>
+                        </div>
+                        <button class="w-full mt-4 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition">
+                            Learn More
+                        </button>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="mb-16 bg-blue-50 p-7 rounded-xl border border-blue-100 shadow-md">
-            <h3 class="text-center text-3xl sm:text-4xl font-bold text-gray-800 mb-8">
-                Specialized Courses for Algerian Professionals
-            </h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="card">
-                    <h4 class="font-bold text-lg mb-3 text-blue-700 flex items-center"><i class="fas fa-graduation-cap mr-2 text-blue-600"></i> Academic English</h4>
-                    <p class="text-gray-700 text-base mb-2">For university academics and researchers focused on publishing papers or presenting at international conferences. Covers academic writing, presentations, and field-specific terminology.</p>
-                    <p class="arabic-text text-gray-600 text-sm">للأكاديميين والباحثين الجامعيين الذين يركزون على نشر الأوراق البحثية أو تقديم العروض التقديمية في المؤتمرات الدولية. تغطي الكتابة الأكاديمية، العروض التقديمية، والمصطلحات الخاصة بالمجال.</p>
+        <!-- Levels Section -->
+        <section class="mb-20">
+            <h2 class="text-2xl md:text-3xl font-bold text-center mb-12">Our Language Levels</h2>
+            
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="border-l-4 border-blue-500 pl-4">
+                        <h3 class="font-bold text-lg mb-2">Beginner (A1-A2)</h3>
+                        <p class="text-gray-600">Basic vocabulary and simple conversations in everyday situations.</p>
+                    </div>
+                    <div class="border-l-4 border-green-500 pl-4">
+                        <h3 class="font-bold text-lg mb-2">Intermediate (B1-B2)</h3>
+                        <p class="text-gray-600">Confident communication in work, travel, and social situations.</p>
+                    </div>
+                    <div class="border-l-4 border-purple-500 pl-4">
+                        <h3 class="font-bold text-lg mb-2">Advanced (C1-C2)</h3>
+                        <p class="text-gray-600">Fluent, nuanced communication for academic and professional use.</p>
+                    </div>
                 </div>
-                <div class="card">
-                    <h4 class="font-bold text-lg mb-3 text-blue-700 flex items-center"><i class="fas fa-comments mr-2 text-blue-600"></i> Conversational English</h4>
-                    <p class="text-gray-700 text-base mb-2">Emphasizes spoken fluency and understanding, including comparative analysis with Algerian dialects. Ideal for professionals seeking confident daily communication.</p>
-                    <p class="arabic-text text-gray-600 text-sm">تركز على الطلاقة والفهم الشفهي، بما في ذلك التحليل المقارن مع اللهجات الجزائرية. مثالية للمهنيين الذين يبحثون عن تواصل يومي واثق.</p>
-                </div>
-                <div class="card">
-                    <h4 class="font-bold text-lg mb-3 text-blue-700 flex items-center"><i class="fas fa-user-tie mr-2 text-blue-600"></i> One-on-One Coaching</h4>
-                    <p class="text-gray-700 text-base mb-2">Customized sessions designed to meet your individual learning objectives, preferred schedule, and pace, delivered by our highly experienced instructors.</p>
-                    <p class="arabic-text text-gray-600 text-sm">جلسات مخصصة مصممة لتلبية أهدافك التعليمية الفردية، جدولك المفضل، ووتيرتك، يقدمها مدرسونا ذوو الخبرة العالية.</p>
-                </div>
-                <div class="card">
-                    <h4 class="font-bold text-lg mb-3 text-blue-700 flex items-center"><i class="fas fa-briefcase mr-2 text-blue-600"></i> Business English</h4>
-                    <p class="text-gray-700 text-base mb-2">Crucial for professionals in Algerian companies engaging with international partners. Topics include effective meeting participation, negotiation strategies, and formal corporate communication.</p>
-                    <p class="arabic-text text-gray-600 text-sm">ضرورية للمهنيين في الشركات الجزائرية الذين يتعاملون مع الشركاء الدوليين. تشمل المواضيع المشاركة الفعالة في الاجتماعات، استراتيجيات التفاوض، والتواصل المؤسسي الرسمي.</p>
-                </div>
-                <div class="card">
-                    <h4 class="font-bold text-lg mb-3 text-blue-700 flex items-center"><i class="fas fa-flask mr-2 text-blue-600"></i> ESP (Medical/Technical)</h4>
-                    <p class="text-gray-700 text-base mb-2">English for Specific Purposes, tailored for healthcare professionals, engineers, and IT specialists, focusing on industry-specific vocabulary and realistic scenarios.</p>
-                    <p class="arabic-text text-gray-600 text-sm">اللغة الإنجليزية لأغراض خاصة، مصممة للمتخصصين في الرعاية الصحية، المهندسين، وخبراء تكنولوجيا المعلومات، مع التركيز على المفردات الخاصة بالصناعة والسيناريوهات الواقعية.</p>
-                </div>
-                <div class="card">
-                    <h4 class="font-bold text-lg mb-3 text-blue-700 flex items-center"><i class="fas fa-university mr-2 text-blue-600"></i> University Custom Programs</h4>
-                    <p class="text-gray-700 text-base mb-2">Bespoke courses developed for Algerian university departments requiring specialized English training for their academic staff and student body.</p>
-                    <p class="arabic-text text-gray-600 text-sm">دورات مصممة خصيصًا لأقسام الجامعات الجزائرية التي تتطلب تدريبًا متخصصًا في اللغة الإنجليزية لأعضاء هيئاتها التدريسية وطلابها.</p>
-                </div>
-            </div>
-            <div class="mt-10 text-center">
-                <button onclick="scrollToForm()" class="btn-secondary inline-flex items-center">
-                    <i class="fas fa-info-circle mr-2"></i> Request Info on Specialized Courses
-                </button>
             </div>
         </section>
 
-        <section class="w-full pt-12 pb-8 bg-purple-50 rounded-xl border border-purple-200 shadow-lg text-center mb-10">
-            <h3 class="text-3xl sm:text-4xl font-bold text-purple-800 mb-6">
-                Ready to Start Your English Journey?
-            </h3>
-            <p class="text-xl text-purple-700 max-w-3xl mx-auto mb-8">
-                Take the first step towards fluency today! Register your interest for our FREE digital placement test to discover your perfect starting point and unlock your potential.
-            </p>
-            <p class="arabic-text text-purple-600 text-lg mb-8">
-                هل أنت مستعد لبدء رحلتك في تعلم اللغة الإنجليزية؟
-                اتخذ الخطوة الأولى نحو الطلاقة اليوم! سجل اهتمامك لاختبار تحديد المستوى الرقمي المجاني لدينا لاكتشاف نقطة البداية المثالية لك واطلاق العنان لإمكانياتك.
-            </p>
-            <button onclick="scrollToForm()" class="btn-placement-test inline-flex items-center text-xl">
-                <i class="fas fa-arrow-alt-circle-down mr-3 text-2xl"></i> REGISTER FOR PLACEMENT TEST!
+        <!-- CTA Section -->
+        <section class="bg-gradient-to-r from-blue-600 to-green-600 rounded-xl p-8 text-center text-white mb-12">
+            <h2 class="text-2xl md:text-3xl font-bold mb-4">Ready to start your language journey?</h2>
+            <p class="text-lg mb-6 max-w-2xl mx-auto">Take our free placement test to find your perfect starting level.</p>
+            <button class="px-6 py-3 bg-white text-blue-600 font-bold rounded-lg hover:bg-gray-100 transition">
+                Take Placement Test
             </button>
         </section>
 
-
-        <section id="registration-form-section" class="w-full pt-4">
-            <h3 class="text-center text-3xl sm:text-4xl font-bold text-gray-800 mb-8">
-                Complete Your Registration
-            </h3>
-            <div class="bg-blue-50 p-6 rounded-xl mb-6 border border-blue-100 shadow-sm">
-                <h4 class="font-bold text-xl mb-3 text-blue-800 flex items-center"><i class="fas fa-id-card-alt mr-2 text-blue-600"></i> Algerian Student Information</h4>
-                <p class="text-gray-700 text-base mb-2">For your convenience, our registration form is available in English, French, and Arabic. Please select your preferred language using the buttons at the top of the page before proceeding.</p>
-                <p class="arabic-text text-gray-600 text-sm mb-2">
-                    لراحتكم، يتوفر نموذج التسجيل الخاص بنا باللغات الإنجليزية والفرنسية والعربية. يرجى اختيار لغتكم المفضلة باستخدام الأزرار الموجودة أعلى الصفحة قبل المتابعة.
-                </p>
-                <p class="text-gray-700 text-base font-semibold mt-4">
-                    Interested in our 100% digital, from-home Placement Test in all skills (reading, writing, speaking, listening)? Register your interest below to receive full details!
-                </p>
-                 <p class="arabic-text text-gray-600 text-sm mt-2">
-                    هل أنتم مهتمون باختبار تحديد المستوى الرقمي بالكامل من المنزل الذي يغطي جميع المهارات (القراءة، الكتابة، التحدث، الاستماع)؟ سجلوا اهتمامكم أدناه لتلقي التفاصيل الكاملة!
-                </p>
-            </div>
-            <div class="form-container rounded-lg overflow-hidden">
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfNrs2BgQZPZ3JZuzFPqDr_byJo3lXaxK1v9Zjb9Jl2O-5jQw/viewform?embedded=true"
-                        width="640"
-                        height="959"
-                        frameborder="0"
-                        marginheight="0"
-                        marginwidth="0">
-                    Loading...
-                </iframe>
+        <!-- Contact Section -->
+        <section class="bg-white rounded-xl shadow-md p-8">
+            <h2 class="text-2xl md:text-3xl font-bold text-center mb-8">Contact Us</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Information</h3>
+                    <p class="text-gray-600 mb-4"><i class="fas fa-map-marker-alt mr-2"></i> Algiers, Algeria</p>
+                    <p class="text-gray-600 mb-4"><i class="fas fa-phone-alt mr-2"></i> +213 795 36 90 06</p>
+                    <p class="text-gray-600"><i class="fas fa-envelope mr-2"></i> contact@irisacademy.dz</p>
+                </div>
+                <div>
+                    <form>
+                        <div class="mb-4">
+                            <input type="text" placeholder="Your Name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div class="mb-4">
+                            <input type="email" placeholder="Your Email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div class="mb-4">
+                            <textarea placeholder="Your Message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                        </div>
+                        <button type="submit" class="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
             </div>
         </section>
-
-        <footer class="text-center mt-16 text-gray-600 text-base">
-            <div class="mb-6 flex justify-center space-x-5 text-2xl">
-                <a href="#" class="text-gray-500 hover:text-blue-700 transition duration-200"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="text-gray-500 hover:text-blue-500 transition duration-200"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="text-gray-500 hover:text-red-600 transition duration-200"><i class="fab fa-youtube"></i></a>
-                <a href="#" class="text-gray-500 hover:text-purple-700 transition duration-200"><i class="fab fa-instagram"></i></a>
-            </div>
-            <p class="text-sm sm:text-base">&copy; 2025 IRIS Language Academy. All rights reserved.</p>
-            <p class="mt-2 text-sm sm:text-base">Algiers, Algeria | Contact via form only</p>
-            <p class="mt-1 text-sm sm:text-base">WhatsApp: <a href="https://wa.me/213795369006" class="text-blue-700 hover:underline" target="_blank">+213 795 36 90 06</a></p>
-            <p class="mt-2 text-sm sm:text-base font-medium">Dedicated to English learners in Algeria.</p>
-        </footer>
     </div>
 
-    <script>
-        function scrollToForm() {
-            const formSection = document.getElementById('registration-form-section');
-            if (formSection) {
-                formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        }
-        
-        function toggleLanguage(lang) {
-            // In a real implementation, this would load translated content
-            alert(`Language switched to ${lang}. In a full implementation, this would translate the page content.`);
-            // You would typically have JSON files with translations and update the DOM here
-        }
-    </script>
-
+    <footer class="bg-gray-50 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="flex justify-center space-x-6 mb-6">
+                <a href="#" class="text-gray-400 hover:text-gray-500"><i class="fab fa-facebook-f text-xl"></i></a>
+                <a href="#" class="text-gray-400 hover:text-gray-500"><i class="fab fa-instagram text-xl"></i></a>
+                <a href="#" class="text-gray-400 hover:text-gray-500"><i class="fab fa-whatsapp text-xl"></i></a>
+            </div>
+            <p class="text-gray-500 text-sm">&copy; 2025 IRIS Language Academy. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>
