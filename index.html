@@ -3,254 +3,297 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IRIS Language Academy - English & German Training</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>IRIS Language Academy - Course Schedule</title>
     <style>
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f9fafb;
-            color: #111827;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+            color: #333;
         }
-        .gradient-text {
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            background-image: linear-gradient(90deg, #3b82f6, #10b981);
+        .header {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
-        .card-hover {
-            transition: all 0.3s ease;
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
         }
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        h2 {
+            color: #2575fc;
+            border-bottom: 2px solid #2575fc;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+        .course-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 1.1em;
+            min-width: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0,0,0,0.15);
+        }
+        .course-table thead tr {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: #ffffff;
+            text-align: left;
+            font-weight: bold;
+        }
+        .course-table th, 
+        .course-table td {
+            padding: 15px 20px;
+        }
+        .course-table tbody tr {
+            border-bottom: 1px solid #dddddd;
+        }
+        .course-table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+        .course-table tbody tr:last-of-type {
+            border-bottom: 2px solid #6a11cb;
+        }
+        .course-table tbody tr:hover {
+            background-color: #e6f0ff;
+            transform: scale(1.01);
+            transition: all 0.2s ease;
+        }
+        .level-A1 { background-color: #ffdddd; }
+        .level-A2 { background-color: #ffffcc; }
+        .level-B1 { background-color: #ddffdd; }
+        .level-B2 { background-color: #ddddff; }
+        .level-C1 { background-color: #ffddff; }
+        .level-C2 { background-color: #ffcc99; }
+        .cta {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 25px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 18px;
+            margin: 20px 0;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        .cta:hover {
+            background-color: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .contact-info {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+            border-left: 5px solid #2575fc;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9em;
         }
     </style>
 </head>
-<body class="min-h-screen">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <!-- Header -->
-        <header class="text-center mb-16">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4">
-                <span class="gradient-text">IRIS Language Academy</span>
-            </h1>
-            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-                Professional English & German language training for all levels
-            </p>
-        </header>
-
-        <!-- Language Tabs -->
-        <div class="flex justify-center mb-12">
-            <div class="inline-flex rounded-lg bg-gray-100 p-1">
-                <button class="px-4 py-2 rounded-md font-medium text-white bg-blue-600">English</button>
-                <button class="px-4 py-2 rounded-md font-medium text-gray-700 hover:bg-gray-200">German</button>
-            </div>
-        </div>
-
-        <!-- Courses Section -->
-        <section class="mb-20">
-            <h2 class="text-2xl md:text-3xl font-bold text-center mb-12">Our Language Programs</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- General English -->
-                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
-                    <div class="p-6">
-                        <div class="flex items-center mb-4">
-                            <div class="bg-blue-100 p-2 rounded-lg mr-4">
-                                <i class="fas fa-language text-blue-600 text-xl"></i>
-                            </div>
-                            <h3 class="text-xl font-bold">General English</h3>
-                        </div>
-                        <p class="text-gray-600 mb-4">Comprehensive English training from A1 to C2 levels with certified instructors.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-blue-50 text-blue-700 text-sm rounded-full">A1-C2</span>
-                            <span class="px-3 py-1 bg-blue-50 text-blue-700 text-sm rounded-full">20h live</span>
-                            <span class="px-3 py-1 bg-blue-50 text-blue-700 text-sm rounded-full">20h platform</span>
-                        </div>
-                        <button class="w-full mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
-                            Learn More
-                        </button>
-                    </div>
-                </div>
-
-                <!-- General German -->
-                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
-                    <div class="p-6">
-                        <div class="flex items-center mb-4">
-                            <div class="bg-green-100 p-2 rounded-lg mr-4">
-                                <i class="fas fa-language text-green-600 text-xl"></i>
-                            </div>
-                            <h3 class="text-xl font-bold">General German</h3>
-                        </div>
-                        <p class="text-gray-600 mb-4">Complete German courses from beginner to advanced levels (A1-C2).</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-green-50 text-green-700 text-sm rounded-full">A1-C2</span>
-                            <span class="px-3 py-1 bg-green-50 text-green-700 text-sm rounded-full">20h live</span>
-                            <span class="px-3 py-1 bg-green-50 text-green-700 text-sm rounded-full">20h platform</span>
-                        </div>
-                        <button class="w-full mt-4 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">
-                            Learn More
-                        </button>
-                    </div>
-                </div>
-
-                <!-- English for Medical -->
-                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
-                    <div class="p-6">
-                        <div class="flex items-center mb-4">
-                            <div class="bg-red-100 p-2 rounded-lg mr-4">
-                                <i class="fas fa-briefcase-medical text-red-600 text-xl"></i>
-                            </div>
-                            <h3 class="text-xl font-bold">Medical English</h3>
-                        </div>
-                        <p class="text-gray-600 mb-4">Specialized English for healthcare professionals with medical terminology.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-red-50 text-red-700 text-sm rounded-full">B1-C1</span>
-                            <span class="px-3 py-1 bg-red-50 text-red-700 text-sm rounded-full">Medical terms</span>
-                            <span class="px-3 py-1 bg-red-50 text-red-700 text-sm rounded-full">Case studies</span>
-                        </div>
-                        <button class="w-full mt-4 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition">
-                            Learn More
-                        </button>
-                    </div>
-                </div>
-
-                <!-- German for Medical -->
-                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
-                    <div class="p-6">
-                        <div class="flex items-center mb-4">
-                            <div class="bg-purple-100 p-2 rounded-lg mr-4">
-                                <i class="fas fa-briefcase-medical text-purple-600 text-xl"></i>
-                            </div>
-                            <h3 class="text-xl font-bold">Medical German</h3>
-                        </div>
-                        <p class="text-gray-600 mb-4">Specialized German for doctors and nurses planning to work in Germany.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-purple-50 text-purple-700 text-sm rounded-full">B1-C1</span>
-                            <span class="px-3 py-1 bg-purple-50 text-purple-700 text-sm rounded-full">Medical terms</span>
-                            <span class="px-3 py-1 bg-purple-50 text-purple-700 text-sm rounded-full">Patient cases</span>
-                        </div>
-                        <button class="w-full mt-4 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition">
-                            Learn More
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Business English -->
-                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
-                    <div class="p-6">
-                        <div class="flex items-center mb-4">
-                            <div class="bg-yellow-100 p-2 rounded-lg mr-4">
-                                <i class="fas fa-chart-line text-yellow-600 text-xl"></i>
-                            </div>
-                            <h3 class="text-xl font-bold">Business English</h3>
-                        </div>
-                        <p class="text-gray-600 mb-4">Corporate communication, negotiations, and professional email writing.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-yellow-50 text-yellow-700 text-sm rounded-full">B1-C2</span>
-                            <span class="px-3 py-1 bg-yellow-50 text-yellow-700 text-sm rounded-full">Meetings</span>
-                            <span class="px-3 py-1 bg-yellow-50 text-yellow-700 text-sm rounded-full">Presentations</span>
-                        </div>
-                        <button class="w-full mt-4 px-4 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transition">
-                            Learn More
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Technical German -->
-                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
-                    <div class="p-6">
-                        <div class="flex items-center mb-4">
-                            <div class="bg-indigo-100 p-2 rounded-lg mr-4">
-                                <i class="fas fa-cogs text-indigo-600 text-xl"></i>
-                            </div>
-                            <h3 class="text-xl font-bold">Technical German</h3>
-                        </div>
-                        <p class="text-gray-600 mb-4">German for engineers and technical professionals with industry vocabulary.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-indigo-50 text-indigo-700 text-sm rounded-full">B1-C2</span>
-                            <span class="px-3 py-1 bg-indigo-50 text-indigo-700 text-sm rounded-full">Engineering</span>
-                            <span class="px-3 py-1 bg-indigo-50 text-indigo-700 text-sm rounded-full">IT</span>
-                        </div>
-                        <button class="w-full mt-4 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition">
-                            Learn More
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Levels Section -->
-        <section class="mb-20">
-            <h2 class="text-2xl md:text-3xl font-bold text-center mb-12">Our Language Levels</h2>
-            
-            <div class="bg-white rounded-xl shadow-md p-6">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="border-l-4 border-blue-500 pl-4">
-                        <h3 class="font-bold text-lg mb-2">Beginner (A1-A2)</h3>
-                        <p class="text-gray-600">Basic vocabulary and simple conversations in everyday situations.</p>
-                    </div>
-                    <div class="border-l-4 border-green-500 pl-4">
-                        <h3 class="font-bold text-lg mb-2">Intermediate (B1-B2)</h3>
-                        <p class="text-gray-600">Confident communication in work, travel, and social situations.</p>
-                    </div>
-                    <div class="border-l-4 border-purple-500 pl-4">
-                        <h3 class="font-bold text-lg mb-2">Advanced (C1-C2)</h3>
-                        <p class="text-gray-600">Fluent, nuanced communication for academic and professional use.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA Section -->
-        <section class="bg-gradient-to-r from-blue-600 to-green-600 rounded-xl p-8 text-center text-white mb-12">
-            <h2 class="text-2xl md:text-3xl font-bold mb-4">Ready to start your language journey?</h2>
-            <p class="text-lg mb-6 max-w-2xl mx-auto">Take our free placement test to find your perfect starting level.</p>
-            <button class="px-6 py-3 bg-white text-blue-600 font-bold rounded-lg hover:bg-gray-100 transition">
-                Take Placement Test
-            </button>
-        </section>
-
-        <!-- Contact Section -->
-        <section class="bg-white rounded-xl shadow-md p-8">
-            <h2 class="text-2xl md:text-3xl font-bold text-center mb-8">Contact Us</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div>
-                    <h3 class="font-bold text-lg mb-4">Information</h3>
-                    <p class="text-gray-600 mb-4"><i class="fas fa-map-marker-alt mr-2"></i> Algiers, Algeria</p>
-                    <p class="text-gray-600 mb-4"><i class="fas fa-phone-alt mr-2"></i> +213 795 36 90 06</p>
-                    <p class="text-gray-600"><i class="fas fa-envelope mr-2"></i> contact@irisacademy.dz</p>
-                </div>
-                <div>
-                    <form>
-                        <div class="mb-4">
-                            <input type="text" placeholder="Your Name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        </div>
-                        <div class="mb-4">
-                            <input type="email" placeholder="Your Email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        </div>
-                        <div class="mb-4">
-                            <textarea placeholder="Your Message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
-                        </div>
-                        <button type="submit" class="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
-                            Send Message
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </section>
+<body>
+    <div class="header">
+        <h1>IRIS Language Academy</h1>
+        <p>Your journey to language mastery starts here</p>
     </div>
 
-    <footer class="bg-gray-50 py-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="flex justify-center space-x-6 mb-6">
-                <a href="#" class="text-gray-400 hover:text-gray-500"><i class="fab fa-facebook-f text-xl"></i></a>
-                <a href="#" class="text-gray-400 hover:text-gray-500"><i class="fab fa-instagram text-xl"></i></a>
-                <a href="#" class="text-gray-400 hover:text-gray-500"><i class="fab fa-whatsapp text-xl"></i></a>
-            </div>
-            <p class="text-gray-500 text-sm">&copy; 2025 IRIS Language Academy. All rights reserved.</p>
-        </div>
-    </footer>
+    <h2>German Courses Schedule</h2>
+    <table class="course-table">
+        <thead>
+            <tr>
+                <th>Course Level</th>
+                <th>Sublevel</th>
+                <th>Start Date</th>
+                <th>Duration</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="level-A1">
+                <td rowspan="3">A1 (Beginner)</td>
+                <td>A1.1</td>
+                <td>01 August 2025</td>
+                <td>4 weeks</td>
+            </tr>
+            <tr class="level-A1">
+                <td>A1.2</td>
+                <td>01 September 2025</td>
+                <td>4 weeks</td>
+            </tr>
+            <tr class="level-A1">
+                <td>A1.3</td>
+                <td>01 October 2025</td>
+                <td>4 weeks</td>
+            </tr>
+            <tr class="level-A2">
+                <td rowspan="3">A2 (Elementary)</td>
+                <td>A2.1</td>
+                <td>01 November 2025</td>
+                <td>4 weeks</td>
+            </tr>
+            <tr class="level-A2">
+                <td>A2.2</td>
+                <td>01 December 2025</td>
+                <td>4 weeks</td>
+            </tr>
+            <tr class="level-A2">
+                <td>A2.3</td>
+                <td>01 January 2026</td>
+                <td>4 weeks</td>
+            </tr>
+            <tr class="level-B1">
+                <td rowspan="3">B1 (Intermediate)</td>
+                <td>B1.1</td>
+                <td>01 February 2026</td>
+                <td>4 weeks</td>
+            </tr>
+            <tr class="level-B1">
+                <td>B1.2</td>
+                <td>01 March 2026</td>
+                <td>4 weeks</td>
+            </tr>
+            <tr class="level-B1">
+                <td>B1.3</td>
+                <td>01 April 2026</td>
+                <td>4 weeks</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>English Courses Schedule</h2>
+    <table class="course-table">
+        <thead>
+            <tr>
+                <th>Course Level</th>
+                <th>Sublevel</th>
+                <th>Start Date</th>
+                <th>Duration</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="level-A1">
+                <td rowspan="3">A1 (Beginner)</td>
+                <td>A1.1</td>
+                <td>01 August 2025</td>
+                <td>4 weeks</td>
+            </tr>
+            <tr class="level-A1">
+                <td>A1.2</td>
+                <td>01 September 2025</td>
+                <td>4 weeks</td>
+            </tr>
+            <tr class="level-A1">
+                <td>A1.3</td>
+                <td>01 October 2025</td>
+                <td>4 weeks</td>
+            </tr>
+            <tr class="level-A2">
+                <td rowspan="3">A2 (Elementary)</td>
+                <td>A2.1</td>
+                <td>01 November 2025</td>
+                <td>4 weeks</td>
+            </tr>
+            <tr class="level-A2">
+                <td>A2.2</td>
+                <td>01 December 2025</td>
+                <td>4 weeks</td>
+            </tr>
+            <tr class="level-A2">
+                <td>A2.3</td>
+                <td>01 January 2026</td>
+                <td>4 weeks</td>
+            </tr>
+            <tr class="level-B1">
+                <td rowspan="3">B1 (Intermediate)</td>
+                <td>B1.1</td>
+                <td>01 February 2026</td>
+                <td>4 weeks</td>
+            </tr>
+            <tr class="level-B1">
+                <td>B1.2</td>
+                <td>01 March 2026</td>
+                <td>4 weeks</td>
+            </tr>
+            <tr class="level-B1">
+                <td>B1.3</td>
+                <td>01 April 2026</td>
+                <td>4 weeks</td>
+            </tr>
+            <tr class="level-B2">
+                <td rowspan="3">B2 (Upper Intermediate)</td>
+                <td>B2.1</td>
+                <td>01 May 2026</td>
+                <td>4 weeks</td>
+            </tr>
+            <tr class="level-B2">
+                <td>B2.2</td>
+                <td>01 June 2026</td>
+                <td>4 weeks</td>
+            </tr>
+            <tr class="level-B2">
+                <td>B2.3</td>
+                <td>01 July 2026</td>
+                <td>4 weeks</td>
+            </tr>
+            <tr class="level-C1">
+                <td rowspan="3">C1 (Advanced)</td>
+                <td>C1.1</td>
+                <td>01 August 2026</td>
+                <td>4 weeks</td>
+            </tr>
+            <tr class="level-C1">
+                <td>C1.2</td>
+                <td>01 September 2026</td>
+                <td>4 weeks</td>
+            </tr>
+            <tr class="level-C1">
+                <td>C1.3</td>
+                <td>01 October 2026</td>
+                <td>4 weeks</td>
+            </tr>
+            <tr class="level-C2">
+                <td rowspan="3">C2 (Proficiency)</td>
+                <td>C2.1</td>
+                <td>01 November 2026</td>
+                <td>4 weeks</td>
+            </tr>
+            <tr class="level-C2">
+                <td>C2.2</td>
+                <td>01 December 2026</td>
+                <td>4 weeks</td>
+            </tr>
+            <tr class="level-C2">
+                <td>C2.3</td>
+                <td>01 January 2027</td>
+                <td>4 weeks</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div style="text-align: center;">
+        <a href="https://forms.gle/5AxQ42yH5T9UWZwp6" class="cta">Enroll Now!</a>
+    </div>
+
+    <div class="contact-info">
+        <h3>Contact Information</h3>
+        <p><strong>WhatsApp:</strong> <a href="https://wa.me/213795369006">+213 795 36 90 06</a></p>
+        <p><strong>Enrollment Link:</strong> <a href="https://forms.gle/5AxQ42yH5T9UWZwp6">https://forms.gle/5AxQ42yH5T9UWZwp6</a></p>
+    </div>
+
+    <div class="footer">
+        <p>© 2025 IRIS Language Academy. All rights reserved.</p>
+    </div>
 </body>
 </html>
